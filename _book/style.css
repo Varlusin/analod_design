@@ -1,0 +1,36 @@
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+
+
+.blackbox {
+  background-color: rgba(80, 240, 255, 0.603);
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1em;
+  border: 2px solid rgb(13, 218, 78);
+  border-radius: 10px;
+}
+.center {
+  text-align: center;
+}
+
+.lf {
+  left: 0;
+}
+
+.rig {
+  right: 0;
+}

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>ԱՆԱԼՈԳԱՅԻՆ ԻՆՏԵԳՐԱԼ ՍԽԵՄԱՆԵՐԻ ՆԱԽԱԳԾՈՒՄ։</title>
+  <meta name="description" content="ԱՆԱԼՈԳԱՅԻՆ ԻՆՏԵԳՐԱԼ ՍԽԵՄԱՆԵՐԻ ՆԱԽԱԳԾՈՒՄ։" />
+  <meta name="generator" content="bookdown 0.37.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="ԱՆԱԼՈԳԱՅԻՆ ԻՆՏԵԳՐԱԼ ՍԽԵՄԱՆԵՐԻ ՆԱԽԱԳԾՈՒՄ։" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="ԱՆԱԼՈԳԱՅԻՆ ԻՆՏԵԳՐԱԼ ՍԽԵՄԱՆԵՐԻ ՆԱԽԱԳԾՈՒՄ։" />
+  
+  
+  
+
+<meta name="author" content="Հեղինակներ՝ Մարիամ Հակոբյան, Նարինե Գալստյան, Երանուհի Զուլալյան, Արմեն Համբարյան, Վարդան Անատոմյան։   Ղեկավարներ՝ Մերի Մարգարյան, Արթուր Բայբուրդյան։" />
+
+
+<meta name="date" content="2023-12-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="ուժեղարարներ.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ՕՊԵՌԱՑԻՈՆ ՈՒԺԵՂԱՐԱՐՆԵՐ։</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> ՆԵՐԱԾՈՒԹՅՈՒՆ։</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#մօկ-մետաղ-օքսիդ-կիսահաղորդիչ-տռանզիստորներ"><i class="fa fa-check"></i><b>1.1</b> ՄՕԿ Մետաղ օքսիդ կիսահաղորդիչ տռանզիստորներ։</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#շեմային-treshold-լարում"><i class="fa fa-check"></i><b>1.2</b> Շեմային «treshold» լարում։</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#վոլտամպեռային-բնութագիրը"><i class="fa fa-check"></i><b>1.3</b> Վոլտ֊Ամպեռային բնութագիրը։</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ուժեղարարներ.html"><a href="ուժեղարարներ.html"><i class="fa fa-check"></i><b>2</b> ՈՒժեղարարներ</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ուժեղարարներ.html"><a href="ուժեղարարներ.html#մօս-մետաղ-օքսիտ-կիսահաղորդիչ-սարքեր"><i class="fa fa-check"></i><b>2.1</b> <b>ՄՕՍ մետաղ օքսիտ կիսահաղորդիչ սարքեր։</b></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>3</b> Cross-references</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cross.html"><a href="cross.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>3.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="3.2" data-path="cross.html"><a href="cross.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>3.2</b> Captioned figures and tables</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>4</b> Parts</a></li>
+<li class="chapter" data-level="5" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>5</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>5.1</b> Footnotes</a></li>
+<li class="chapter" data-level="5.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>5.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>6</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>6.1</b> Equations</a></li>
+<li class="chapter" data-level="6.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>6.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="6.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>6.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>7</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>7.1</b> Publishing</a></li>
+<li class="chapter" data-level="7.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>7.2</b> 404 pages</a></li>
+<li class="chapter" data-level="7.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>7.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ԱՆԱԼՈԳԱՅԻՆ ԻՆՏԵԳՐԱԼ ՍԽԵՄԱՆԵՐԻ ՆԱԽԱԳԾՈՒՄ։</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">ԱՆԱԼՈԳԱՅԻՆ ԻՆՏԵԳՐԱԼ ՍԽԵՄԱՆԵՐԻ ՆԱԽԱԳԾՈՒՄ։</h1>
+<p class="author"><em><strong>Հեղինակներ՝</strong> Մարիամ Հակոբյան, Նարինե Գալստյան, Երանուհի Զուլալյան, Արմեն Համբարյան, Վարդան Անատոմյան։ <br /> <strong>Ղեկավարներ՝</strong> Մերի Մարգարյան, Արթուր Բայբուրդյան։</em></p>
+<p class="date"><em>2023-12-04</em></p>
+</div>
+<div id="ներածություն" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">ՄԱՍ 1</span> ՆԵՐԱԾՈՒԹՅՈՒՆ։<a href="index.html#ներածություն" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Նախքան <strong>օպեռացիոն ուժեղարարների</strong>բնութագրիչ մեծությունների, կառուցվածքի, նախագծման
+փուլերի, դրանց առանձնահատկությունների մասին խոսելը ներածական մասը կնվիրենք դաշտային
+տռանզիստորների կառուցվածքի, աշխատանքային ռեժիմների Վոլտ֊Ամպեռային <strong>«ՎԱԲ»</strong> բնութագրի
+համառոտ ներկայացմամը։</p>
+<div id="մօկ-մետաղ-օքսիդ-կիսահաղորդիչ-տռանզիստորներ" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> ՄՕԿ Մետաղ օքսիդ կիսահաղորդիչ տռանզիստորներ։<a href="index.html#մօկ-մետաղ-օքսիդ-կիսահաղորդիչ-տռանզիստորներ" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<img src="imige/mostex.jpg" alt="..." width="100%" />
+<p class="caption">
+Figure 1.1: …
+</p>
+</div>
+<p>Նկարում պատկերված են <strong>ՆՄՕԿ</strong> և <strong>ՊՄՈԿ</strong> տրանզիստորների պարզեցված կառուցվածքը։ Ինչպես
+երևում է նկարից սարքերը սիմետրիկ էն փականի նկատմամբ, որը պատճառներից մեկն է լայնամաշտաբ
+կիռառման, քանի որ հեշտացնում է արտադրական պռոցեսները իտարբերություն երկբևեռ
+տրանզիստորների։ Ինտեգրալ սխեմաներ պատրաստելուց վերցնում են P տիպի կիսահաղորդիչ հարթակ
+«substrate»: ՊՄՕԿ տռանզիստորներ ստանալու համար տարբեր եղանակներով հարթակի մեջ ներդնում
+են N տիպի իմպլանտ։</p>
+<p>Աշխատանքի սկզբունքը ուսունմասիրելու համար դիտարկենք ՆՄՕԿ տրանզիստորը։ տրանզիստորի
+աշխատանքի համար իրականում անհրաժեշտ է ևս մեկ ելուս որպիսի հարթակին պոտենցիալ հաղորդի։
+Հարթակից ակունք և ըմբիչ հոսանք չանցնելու համար պետկ է հարթակը ունենա ավելի ցածր
+պոտենցիալ։ Պարզության համար ենթադրենք հարթակը և ակունքը միացված են իրար։ Ինչպես երևում
+է նկարից փականը և հարթակը առանձնացված են օքսիդով այս կառուցվածքը իրենից ներկայացնում
+կոնդեսատոր։</p>
+</div>
+<div id="շեմային-treshold-լարում" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Շեմային «treshold» լարում։<a href="index.html#շեմային-treshold-լարում" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="imige/th.png" alt="..." width="100%" />
+<p class="caption">
+Figure 1.2: …
+</p>
+</div>
+<p>Դիտարկենք նկարում պատկերված արտաքին լարումներին միացված ՆՄՈԿ֊ը։ Երբ փականի պոտենցիալը
+հարթակի նկատմամբ մեծանում է <span class="math inline">\(\pmb{\varphi&gt;0}\)</span> հարթակի ազատ լիցքակիրները խոռոչները
+սկսում են վանվել ներքև թողնելով բացասական իոններ ստեղծվում է աղքատացված տիրույթ։
+Այսպիսով որքան մեծանա <span class="math inline">\(\pmb{\varphi}\)</span>֊ն այնքան ավելի կհաստանա աղքատացման տիրույթը
+հետևաբար խոռոչների կոնցենտրացիան հարթակի ներքևում ավելի կմեծանա։ <span class="math inline">\(\pmb{\varphi}\)</span>֊ի
+բավարար մեծ արժեքի դեպքում օքսիդի տակ սկսում է իհայտ գալ ազատ էլեկտրոններ որոնց մի մասը
+ակունքիցից են հոսել իսկ մի մասը հարթակից։ Այսպիսով ակունքի և ըմբիչի միջև առաջանում է
+հոսքուղի։ այս երևույթը հաճախ անվանում են նաև կիսահաղորդչի տիպի շրջում։</p>
+<p><strong><span class="math inline">\(V_{gs}\)</span>֊ի այն մինիմալ լարումը որի դեպքում առաջանում է հոսքուղի «տեղի է ունենում
+ինվերսիա» կոչվում է շեմային լարում:</strong></p>
+<p><span class="math display">\[V_{TH} = 𝜱_{MS} + 2 𝜱_F + \frac{G_{dep}}{C_ox}\]</span></p>
+<p>Որտեղ՝</p>
+<ul>
+<li><span class="math inline">\(𝜱_{MS}\)</span>֊ը հարթակի և փականի աշխատանքային ֆունկցիաների տարբերությունն է։</li>
+<li><span class="math inline">\(𝜱_F = \frac{kT}{q} \ln{\frac{N_{sub}}{n_i}}\)</span>
+<ul>
+<li><span class="math inline">\(k\)</span>֊ն Բելցմանի հաստատուն։</li>
+<li><span class="math inline">\(N_{sub}\)</span>֊ը հարթակի լիցքակիրների կոնցետրացիան <strong>«doping density»</strong>:</li>
+<li><span class="math inline">\(n_i\)</span>֊ը մաքուր կիսահաղորդիչ հարթակի լիցքակիրների կոնցետրացիան <strong>«udoping density»</strong>:</li>
+</ul></li>
+<li><span class="math inline">\(C_{ox}\)</span>֊ը միաոր մակերես ունեցող հաթակ օքսիդ ըմբիչ կոնդեսատորի ունակությունն է։</li>
+<li><span class="math inline">\(Q_dep\)</span>֊ը աղքատացման տիրույթի իոնների լիցքն է։</li>
+</ul>
+<p>Ներկայումս երբ տրանզիստորների չափերը համենատելի են ատոմի չափերին շատ դժվար է տալ բանաձև
+ոչ միայն շեմային լարման այլ նաև ՎԱԲ֊ի և այլ բնութագրերի համար, այդ պատճառով պարամետրերը
+հաճախ <strong>գնահատում</strong> են օգտվելով վիճակագրական մեթոդներից։</p>
+</div>
+<div id="վոլտամպեռային-բնութագիրը" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Վոլտ֊Ամպեռային բնութագիրը։<a href="index.html#վոլտամպեռային-բնութագիրը" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>ՄՈԿ տրանզիստորի վոլտ֊Ամպեռային բնութագրի մասին խոսելիս կուզենաինք նշել որ, երբ փականի
+պոտենցիալը գերազանցում է շեմային լարումը ըմբիչով կարող է հոսանք անցնել նշանակում է՝
+տրանզիստորը բաց է սակայն փականով հոսանք չի անցնում։</p>
+<p>Դիտարկենք նկարում պատկերված արտաքին լարումներին միացված երկու դեպքերը։</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="imige/va.png" alt="..." width="100%" />
+<p class="caption">
+Figure 1.3: …
+</p>
+</div>
+<div class="blackbox">
+<div class="lf">
+<div class="center">
+<p>Երբ ակունքի և ըմբիչի պոտենցիալները իրար հավասար են՝
+<span class="math display">\[Q_d = WC_{ox}(V_{GS} - V_{TH})\]</span></p>
+</div>
+</div>
+<div class="rig">
+<div class="center">
+<p>Երբ <span class="math inline">\(V_{DS&gt;0}\)</span> հոսքուղու որևէ X կետում՝</p>
+<p><span class="math display">\[Q_d(x) = WC_{ox}(V_{GS} -V(x) - V_{TH})\]</span></p>
+</div>
+</div>
+</div>
+<p>Այժմ ենթադրենք ունենք N տիպի բավական երկար կիսահաղորդիչ որը տեղադրված է համասեռ մեկ
+միաոր էլ․ դաշտում։ Ակնհայտ լիցքակիրները կսկսեն արագանալ սակայն տեղի են ունենում
+բախումներ այդ պատճառուվ որոշները կանգ կառնեն և նորից կսկսեն արագանալ որոշները կարող է
+ընդհանրապես հանդիպեն խոռոչի և զբաղեցնեն ազատ տեղը։ Այսպիսով որպիսի կարողանանք
+բնութագրենք շարժումը ներմուծենք լիցքի շարժողականություն մեծությունը, որը միջինացված
+արժեք է և ցուից է տալիս թե միջինում ինչ արագությամբ է շարժվում լիցքակիրը արտաքին
+էլ․ դաշտի ազդեցության տակ <span class="math inline">\(μ_n = \frac{V}{E}\)</span>։</p>
+<p>Երբ հայտնի է ազատ լիցքակիրների բաշխվածությունը օգտվելով էլ․ հոսանքի սահմանումից կստանանք՝</p>
+<p><span class="math display">\[I_{D} = μ_n C_{ox} \frac{W}{L}[(V_{GS} - V_{TH})V_{DS} - \frac{1}{2}V_{DS}^2]\]</span></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="ուժեղարարներ.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

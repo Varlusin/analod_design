@@ -1,0 +1,300 @@
+--- 
+title: "ԱՆԱԼՈԳԱՅԻՆ ԻՆՏԵԳՐԱԼ ՍԽԵՄԱՆԵՐԻ ՆԱԽԱԳԾՈՒՄ։"
+author: "**Հեղինակներ՝** Մարիամ Հակոբյան, Նարինե Գալստյան, Երանուհի Զուլալյան, Արմեն Համբարյան, Վարդան Անատոմյան։ <br /> **Ղեկավարներ՝** Մերի Մարգարյան, Արթուր Բայբուրդյան։"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+
+# ՆԵՐԱԾՈՒԹՅՈՒՆ։
+Նախքան **օպեռացիոն ուժեղարարների**բնութագրիչ մեծությունների, կառուցվածքի, նախագծման 
+փուլերի, դրանց առանձնահատկությունների մասին խոսելը ներածական մասը կնվիրենք դաշտային 
+տռանզիստորների կառուցվածքի, աշխատանքային ռեժիմների Վոլտ֊Ամպեռային **«ՎԱԲ»** բնութագրի 
+համառոտ ներկայացմամը։
+
+## ՄՕԿ Մետաղ օքսիդ կիսահաղորդիչ տռանզիստորներ։ 
+
+```{r, echo=FALSE, out.width='100%', fig.align='center', fig.cap='...'}
+knitr::include_graphics("imige/mostex.jpg")
+```
+
+Նկարում պատկերված են **ՆՄՕԿ** և **ՊՄՈԿ** տրանզիստորների պարզեցված կառուցվածքը։ Ինչպես 
+երևում է նկարից սարքերը սիմետրիկ էն փականի նկատմամբ, որը պատճառներից մեկն է լայնամաշտաբ 
+կիռառման, քանի որ հեշտացնում է արտադրական պռոցեսները իտարբերություն երկբևեռ 
+տրանզիստորների։ Ինտեգրալ սխեմաներ պատրաստելուց վերցնում են P տիպի կիսահաղորդիչ հարթակ 
+«substrate»: ՊՄՕԿ տռանզիստորներ ստանալու համար տարբեր եղանակներով հարթակի մեջ ներդնում 
+են N տիպի իմպլանտ։
+
+Աշխատանքի սկզբունքը ուսունմասիրելու համար դիտարկենք ՆՄՕԿ տրանզիստորը։ տրանզիստորի 
+աշխատանքի համար իրականում անհրաժեշտ է ևս մեկ ելուս որպիսի հարթակին պոտենցիալ հաղորդի։ 
+Հարթակից ակունք և ըմբիչ հոսանք չանցնելու համար պետկ է հարթակը ունենա ավելի ցածր 
+պոտենցիալ։ Պարզության համար ենթադրենք հարթակը և ակունքը միացված են իրար։ Ինչպես երևում 
+է նկարից փականը և հարթակը առանձնացված են օքսիդով այս կառուցվածքը իրենից ներկայացնում 
+կոնդեսատոր։
+
+## Շեմային «treshold» լարում։
+
+```{r, echo=FALSE, out.width='100%', fig.align='center', fig.cap='...'}
+knitr::include_graphics("imige/th.png")
+```
+
+Դիտարկենք նկարում պատկերված արտաքին լարումներին միացված ՆՄՈԿ֊ը։ Երբ փականի պոտենցիալը 
+հարթակի նկատմամբ մեծանում է $\pmb{\varphi>0}$ հարթակի ազատ լիցքակիրները խոռոչները 
+սկսում են վանվել ներքև թողնելով բացասական իոններ ստեղծվում է աղքատացված տիրույթ։ 
+Այսպիսով որքան մեծանա $\pmb{\varphi}$֊ն այնքան ավելի կհաստանա աղքատացման տիրույթը 
+հետևաբար խոռոչների կոնցենտրացիան հարթակի ներքևում ավելի կմեծանա։ $\pmb{\varphi}$֊ի 
+բավարար մեծ արժեքի դեպքում օքսիդի տակ սկսում է իհայտ գալ ազատ էլեկտրոններ որոնց մի մասը 
+ակունքիցից են հոսել իսկ մի մասը հարթակից։ Այսպիսով ակունքի և ըմբիչի միջև առաջանում է 
+հոսքուղի։ այս երևույթը հաճախ անվանում են նաև կիսահաղորդչի տիպի շրջում։
+
+**$V_{gs}$֊ի այն մինիմալ լարումը որի դեպքում առաջանում է հոսքուղի «տեղի է ունենում 
+ինվերսիա» կոչվում է շեմային լարում:**
+
+$$V_{TH} = 𝜱_{MS} + 2 𝜱_F + \frac{G_{dep}}{C_ox}$$
+
+Որտեղ՝
+
+* $𝜱_{MS}$֊ը հարթակի և փականի աշխատանքային ֆունկցիաների տարբերությունն է։
+* $𝜱_F = \frac{kT}{q} \ln{\frac{N_{sub}}{n_i}}$
+  + $k$֊ն Բելցմանի հաստատուն։
+  + $N_{sub}$֊ը հարթակի լիցքակիրների կոնցետրացիան **«doping density»**:
+  + $n_i$֊ը մաքուր կիսահաղորդիչ հարթակի լիցքակիրների կոնցետրացիան **«udoping density»**:
+* $C_{ox}$֊ը միաոր մակերես ունեցող հաթակ օքսիդ ըմբիչ կոնդեսատորի ունակությունն է։
+* $Q_dep$֊ը աղքատացման տիրույթի իոնների լիցքն է։
+
+Ներկայումս երբ տրանզիստորների չափերը համենատելի են ատոմի չափերին շատ դժվար է տալ բանաձև 
+ոչ միայն շեմային լարման այլ նաև ՎԱԲ֊ի և այլ բնութագրերի համար, այդ պատճառով պարամետրերը 
+հաճախ **գնահատում** են օգտվելով վիճակագրական մեթոդներից։
+
+## Վոլտ֊Ամպեռային բնութագիրը։
+
+ՄՈԿ տրանզիստորի վոլտ֊Ամպեռային բնութագրի մասին խոսելիս կուզենաինք նշել որ, երբ փականի 
+պոտենցիալը գերազանցում է շեմային լարումը ըմբիչով կարող է հոսանք անցնել նշանակում է՝
+տրանզիստորը բաց է սակայն փականով հոսանք չի անցնում։
+
+Դիտարկենք նկարում պատկերված արտաքին լարումներին միացված երկու դեպքերը։
+
+```{r, echo=FALSE, out.width='100%', fig.align='center', fig.cap='...'}
+knitr::include_graphics("imige/va.png")
+```
+
+::::: {.blackbox data-latex=""}
+
+:::: {.lf data-latex=""}
+::: {.center data-latex=""}
+Երբ ակունքի և ըմբիչի պոտենցիալները իրար հավասար են՝
+$$Q_d = WC_{ox}(V_{GS} - V_{TH})$$
+:::
+::::
+
+:::: {.rig data-latex=""}
+::: {.center data-latex=""}
+Երբ $V_{DS>0}$ հոսքուղու որևէ X կետում՝
+
+$$Q_d(x) = WC_{ox}(V_{GS} -V(x) - V_{TH})$$
+:::
+::::
+
+:::::
+
+Այժմ ենթադրենք ունենք N տիպի բավական երկար կիսահաղորդիչ որը տեղադրված է համասեռ մեկ 
+միաոր էլ․ դաշտում։ Ակնհայտ լիցքակիրները կսկսեն արագանալ սակայն տեղի են ունենում 
+բախումներ այդ պատճառուվ որոշները կանգ կառնեն և նորից կսկսեն արագանալ որոշները կարող է 
+ընդհանրապես հանդիպեն խոռոչի և զբաղեցնեն ազատ տեղը։ Այսպիսով որպիսի կարողանանք 
+բնութագրենք շարժումը ներմուծենք լիցքի շարժողականություն մեծությունը, որը միջինացված 
+արժեք է և ցուից է տալիս թե միջինում ինչ արագությամբ է շարժվում լիցքակիրը արտաքին 
+էլ․ դաշտի ազդեցության տակ $μ_n = \frac{V}{E}$։ 
+
+Երբ հայտնի է ազատ լիցքակիրների բաշխվածությունը օգտվելով էլ․ հոսանքի սահմանումից կստանանք՝
+
+$$I_{D} = μ_n C_{ox} \frac{W}{L}[(V_{GS} - V_{TH})V_{DS} - \frac{1}{2}V_{DS}^2]$$
+
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+<!--chapter:end:index.Rmd-->
+
+# ՈՒժեղարարներ
+
+```{r setup, include=FALSE}
+library(reticulate)
+use_python("/usr/bin/python3")
+```
+
+
+## <b>ՄՕՍ մետաղ օքսիտ կիսահաղորդիչ սարքեր։</b>
+
+  
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+x = np.linspace(-np.pi , np.pi, 100)
+y = np.sin(x)
+plt.plot(x , y)
+plt.show()
+```
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+<!--chapter:end:01-into.Rmd-->
+
+# Cross-references {#cross}
+
+Cross-references make it easier for your readers to find and link to elements in your book.
+
+## Chapters and sub-chapters
+
+There are two steps to cross-reference any heading:
+
+1. Label the heading: `# Hello world {#nice-label}`. 
+    - Leave the label off if you like the automated heading generated based on your heading title: for example, `# Hello world` = `# Hello world {#hello-world}`.
+    - To label an un-numbered heading, use: `# Hello world {-#nice-label}` or `{# Hello world .unnumbered}`.
+
+1. Next, reference the labeled heading anywhere in the text using `\@ref(nice-label)`; for example, please see Chapter \@ref(cross). 
+    - If you prefer text as the link instead of a numbered reference use: [any text you want can go here](#cross).
+
+## Captioned figures and tables
+
+Figures and tables *with captions* can also be cross-referenced from elsewhere in your book using `\@ref(fig:chunk-label)` and `\@ref(tab:chunk-label)`, respectively.
+
+See Figure \@ref(fig:nice-fig).
+
+```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center', fig.alt='Plot with connected points showing that vapor pressure of mercury increases exponentially as temperature increases.'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+Don't miss Table \@ref(tab:nice-tab).
+
+```{r nice-tab, tidy=FALSE}
+knitr::kable(
+  head(pressure, 10), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+<!--chapter:end:02-cross-refs.Rmd-->
+
+# Parts
+
+You can add parts to organize one or more book chapters together. Parts can be inserted at the top of an .Rmd file, before the first-level chapter heading in that same file. 
+
+Add a numbered part: `# (PART) Act one {-}` (followed by `# A chapter`)
+
+Add an unnumbered part: `# (PART\*) Act one {-}` (followed by `# A chapter`)
+
+Add an appendix as a special kind of un-numbered part: `# (APPENDIX) Other stuff {-}` (followed by `# A chapter`). Chapters in an appendix are prepended with letters instead of numbers.
+
+
+
+
+<!--chapter:end:03-parts.Rmd-->
+
+# Footnotes and citations 
+
+## Footnotes
+
+Footnotes are put inside the square brackets after a caret `^[]`. Like this one ^[This is a footnote.]. 
+
+## Citations
+
+Reference items in your bibliography file(s) using `@key`.
+
+For example, we are using the **bookdown** package [@R-bookdown] (check out the last code chunk in index.Rmd to see how this citation key was added) in this sample book, which was built on top of R Markdown and **knitr** [@xie2015] (this citation was added manually in an external file book.bib). 
+Note that the `.bib` files need to be listed in the index.Rmd with the YAML `bibliography` key.
+
+
+The RStudio Visual Markdown Editor can also make it easier to insert citations: <https://rstudio.github.io/visual-markdown-editing/#/citations>
+
+<!--chapter:end:04-citations.Rmd-->
+
+# Blocks
+
+## Equations
+
+Here is an equation.
+
+\begin{equation} 
+  f\left(k\right) = \binom{n}{k} p^k\left(1-p\right)^{n-k}
+  (\#eq:binom)
+\end{equation} 
+
+You may refer to using `\@ref(eq:binom)`, like see Equation \@ref(eq:binom).
+
+
+## Theorems and proofs
+
+Labeled theorems can be referenced in text using `\@ref(thm:tri)`, for example, check out this smart theorem \@ref(thm:tri).
+
+::: {.theorem #tri}
+For a right triangle, if $c$ denotes the *length* of the hypotenuse
+and $a$ and $b$ denote the lengths of the **other** two sides, we have
+$$a^2 + b^2 = c^2$$
+:::
+
+Read more here <https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html>.
+
+## Callout blocks
+
+
+The R Markdown Cookbook provides more help on how to use custom blocks to design your own callouts: https://bookdown.org/yihui/rmarkdown-cookbook/custom-blocks.html
+
+<!--chapter:end:05-blocks.Rmd-->
+
+# Sharing your book
+
+## Publishing
+
+HTML books can be published online, see: https://bookdown.org/yihui/bookdown/publishing.html
+
+## 404 pages
+
+By default, users will be directed to a 404 page if they try to access a webpage that cannot be found. If you'd like to customize your 404 page instead of using the default, you may add either a `_404.Rmd` or `_404.md` file to your project root and use code and/or Markdown syntax.
+
+## Metadata for sharing
+
+Bookdown HTML books will provide HTML metadata for social sharing on platforms like Twitter, Facebook, and LinkedIn, using information you provide in the `index.Rmd` YAML. To setup, set the `url` for your book and the path to your `cover-image` file. Your book's `title` and `description` are also used.
+
+
+
+This `gitbook` uses the same social sharing data across all chapters in your book- all links shared will look the same.
+
+Specify your book's source repository on GitHub using the `edit` key under the configuration options in the `_output.yml` file, which allows users to suggest an edit by linking to a chapter's source file. 
+
+Read more about the features of this output format here:
+
+https://pkgs.rstudio.com/bookdown/reference/gitbook.html
+
+Or use:
+
+```{r eval=FALSE}
+?bookdown::gitbook
+```
+
+
+
+<!--chapter:end:06-share.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:07-references.Rmd-->
+
+
+<!--chapter:end:exemple.Rmd-->
+
