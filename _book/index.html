@@ -266,7 +266,10 @@ Figure 1.2: …
 հոսքուղի։ այս երևույթը հաճախ անվանում են նաև կիսահաղորդչի տիպի շրջում։</p>
 <p><strong><span class="math inline">\(V_{gs}\)</span>֊ի այն մինիմալ լարումը որի դեպքում առաջանում է հոսքուղի «տեղի է ունենում
 ինվերսիա» կոչվում է շեմային լարում:</strong></p>
-<p><span class="math display">\[V_{TH} = 𝜱_{MS} + 2 𝜱_F + \frac{G_{dep}}{C_ox}\]</span></p>
+<p><span class="math display" id="eq:binom">\[\begin{equation}
+  V_{TH} = 𝜱_{MS} + 2 𝜱_F + \frac{G_{dep}}{C_ox}
+  \tag{1.1}
+\end{equation}\]</span></p>
 <p>Որտեղ՝</p>
 <ul>
 <li><span class="math inline">\(𝜱_{MS}\)</span>֊ը հարթակի և փականի աշխատանքային ֆունկցիաների տարբերությունն է։</li>
@@ -299,13 +302,17 @@ Figure 1.3: …
 <div class="lf">
 <div class="center">
 <p>Երբ ակունքի և ըմբիչի պոտենցիալները իրար հավասար են՝
-<span class="math display">\[Q_d = WC_{ox}(V_{GS} - V_{TH})\]</span></p>
+<span class="math display">\[\begin{align}  
+  Q_d = WC_{ox}(V_{GS} - V_{TH})
+\end{align}\]</span></p>
 </div>
 </div>
 <div class="rig">
 <div class="center">
 <p>Երբ <span class="math inline">\(V_{DS&gt;0}\)</span> հոսքուղու որևէ X կետում՝</p>
-<p><span class="math display">\[Q_d(x) = WC_{ox}(V_{GS} -V(x) - V_{TH})\]</span></p>
+<p><span class="math display">\[\begin{align}
+  Q_d = WC_{ox}(V_{GS} - V_{TH})
+\end{align}\]</span></p>
 </div>
 </div>
 </div>
@@ -317,7 +324,17 @@ Figure 1.3: …
 արժեք է և ցուից է տալիս թե միջինում ինչ արագությամբ է շարժվում լիցքակիրը արտաքին
 էլ․ դաշտի ազդեցության տակ <span class="math inline">\(μ_n = \frac{V}{E}\)</span>։</p>
 <p>Երբ հայտնի է ազատ լիցքակիրների բաշխվածությունը օգտվելով էլ․ հոսանքի սահմանումից կստանանք՝</p>
-<p><span class="math display">\[I_{D} = μ_n C_{ox} \frac{W}{L}[(V_{GS} - V_{TH})V_{DS} - \frac{1}{2}V_{DS}^2]\]</span></p>
+<p><span class="math display" id="eq:align">\[\begin{equation}
+  I_{D} = μ_n C_{ox} \frac{W}{L}[(V_{GS} - V_{TH})V_{DS} - \frac{1}{2}V_{DS}^2]
+  \tag{1.2}
+\end{equation}\]</span></p>
+<p>Ստացված <span class="math inline">\((1.2)\)</span> Արտահայտությունը ըստ <span class="math inline">\(V_{DS}\)</span>֊ի մեկ մեծագույն ունեցող քառակուսի
+հավասարում է, որը իր առավելագույն արժեքը ընդունում է <span class="math inline">\(V_{DS} = V_{GS} - V_{TH}\)</span> իսկ
+առավելագույն հոսանքը կլինի՝</p>
+<p><span class="math display" id="eq:3">\[\begin{equation}
+  I_{D, max} = \frac{1}{2} μ_n C_{ox} \frac{W}{L} (V_{GS} - V_{TH})^2
+  \tag{1.3}
+\end{equation}\]</span></p>
 
 </div>
 </div>
