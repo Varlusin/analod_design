@@ -42,3 +42,6 @@ publishing
 pages
 metadata-for-sharing
 fig:unnamed-chunk-9
+eq:8
+fig:unnamed-chunk-10
+section

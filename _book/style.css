@@ -37,5 +37,13 @@ pre code {
 
 
 .header-section-number{
-  color: rgb(13, 218, 78);
+  color: #7100ff;
+}
+
+.title{
+  color: #7100ff;
+}
+
+.hasAnchor{
+  color: #7100ff;
 }

@@ -31,7 +31,7 @@
   
   
 
-<link rel="next" href="ուժեղարարներ.html"/>
+<link rel="next" href="section.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -175,9 +175,9 @@ div.csl-indent {
 <li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#մօկ-փոքր-ազդանշան-small-signal-մոդել"><i class="fa fa-check"></i><b>1.5</b> ՄՕԿ փոքր ազդանշան «Small-Signal» մոդել:</a></li>
 <li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#մօկ-spice-մոդել"><i class="fa fa-check"></i><b>1.6</b> ՄՕԿ «Spice» մոդել:</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="ուժեղարարներ.html"><a href="ուժեղարարներ.html"><i class="fa fa-check"></i><b>2</b> ՈՒժեղարարներ</a>
+<li class="chapter" data-level="2" data-path="section.html"><a href="section.html"><i class="fa fa-check"></i><b>2</b> </a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="ուժեղարարներ.html"><a href="ուժեղարարներ.html#մօս-մետաղ-օքսիտ-կիսահաղորդիչ-սարքեր"><i class="fa fa-check"></i><b>2.1</b> <b>ՄՕՍ մետաղ օքսիտ կիսահաղորդիչ սարքեր։</b></a></li>
+<li class="chapter" data-level="2.1" data-path="section.html"><a href="section.html#մօս-մետաղ-օքսիտ-կիսահաղորդիչ-սարքեր"><i class="fa fa-check"></i><b>2.1</b> <b>ՄՕՍ մետաղ օքսիտ կիսահաղորդիչ սարքեր։</b></a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>3</b> Cross-references</a>
 <ul>
@@ -449,9 +449,37 @@ Figure 1.6: …
 Figure 1.7: …
 </p>
 </div>
+<p>Նկարում պատկերված են երկու փոքր ազդանշան մոդելներ։ (b)֊ում հաշվի է առնված հոսքուղու
+մոդուլացիան որտեղ՝</p>
+<p><span class="math display" id="eq:8">\[\begin{equation}
+  r_0 = \frac{\partial V_{DS}}{\partial I_D} ≈ \frac{1}{λ I_D}
+  \tag{1.8}
+\end{equation}\]</span></p>
 </div>
 <div id="մօկ-spice-մոդել" class="section level2 hasAnchor" number="1.6">
 <h2><span class="header-section-number">1.6</span> ՄՕԿ «Spice» մոդել:<a href="index.html#մօկ-spice-մոդել" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>«Spice»-ը ծրագրային ապահովում է որի առաջին տարբերակը թողարկվել է 1973 թվականին։ «Spice»-ը
+թույլ է տալիս կառուցել սխեմաի մաթեմատիկական մոդելներ կատարել տարբեր տեսակի հետազոտություններ։
+Որպիսի հաշվիչ սարքը կարողանա կառուցել սխեմաի մոդելը անհրաժեշտ է տալ տարերը դրանց միացումը
+ընդ որում ամեն տարի համար գոյություն ունի միացումների սահմանված հերթականություն ինչպես
+նաև այդ տարերի մաթեմատիկական մոդելները «lib»։ «Spice» ում ՄՈԿ֊ը մոդելաորվում է`</p>
+<ul>
+<li>VTO Շեմաին լարումը երբ <span class="math inline">\(V_{SB} = 0\)</span></li>
+<li><span class="math inline">\(GAMMA\)</span> «body-effect» գործակից։</li>
+<li>PHI <span class="math inline">\(2𝜱_{F}\)</span>։</li>
+<li>TOX օքսիդիք հաստությունը։</li>
+<li>NSUB Հարթակի «դոպինգաորման» կոնցենտրացիան։</li>
+<li>UO Հոսքուղու շարժողականությունը։</li>
+<li>LAMBDA Հոսքուղու մոդուլացիաի գործակից։</li>
+<li>CJ ակունք ըմբիչ կոնդեսատորի ունակությունը միաոր մակերեսի համար։</li>
+<li>…</li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-10"></span>
+<img src="imige/spmodel.gif" alt="..." width="100%" />
+<p class="caption">
+Figure 1.8: …
+</p>
+</div>
 
 </div>
 </div>
@@ -461,7 +489,7 @@ Figure 1.7: …
         </div>
       </div>
 
-<a href="ուժեղարարներ.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="section.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
