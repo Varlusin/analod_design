@@ -14,10 +14,8 @@ fig:unnamed-chunk-7
 fig:unnamed-chunk-9
 eq:8
 fig:unnamed-chunk-10
-fig:nice-fig
-tab:nice-tab
-eq:binom
-thm:tri
+fig:unnamed-chunk-11
+fig:unnamed-chunk-12
 ներածություն
 մօկ-մետաղ-օքսիդ-կիսահաղորդիչ-տռանզիստորներ
 շեմային-treshold-լարում
@@ -27,8 +25,7 @@ body-էֆեքտ
 մօկ-փոխանցման-գործակից-transconductance
 մօկ-փոքր-ազդանշան-small-signal-մոդել
 մօկ-spice-մոդել
-section
-մօս-մետաղ-օքսիտ-կիսահաղորդիչ-սարքեր
+մեկ-տրանզիստորով-single-stage-ուժեղարարներ
 cross
 chapters-and-sub-chapters
 captioned-figures-and-tables
@@ -44,3 +41,6 @@ sharing-your-book
 publishing
 pages
 metadata-for-sharing
+fig:unnamed-chunk-1
+ընդհանուր-ակունքով
+ընդհանուր-ակունքով-ուժեղարար

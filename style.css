@@ -47,3 +47,5 @@ pre code {
 .hasAnchor{
   color: #7100ff;
 }
+
+.cols {display: flex; }
