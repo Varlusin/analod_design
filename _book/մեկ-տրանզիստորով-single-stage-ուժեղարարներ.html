@@ -23,7 +23,7 @@
 <meta name="author" content="Հեղինակներ՝ Մարիամ Հակոբյան, Նարինե Գալստյան, Երանուհի Զուլալյան, Արմեն Համբարյան, Վարդան Անատոմյան։   Ղեկավարներ՝ Մերի Մարգարյան, Արթուր Բայբուրդյան։" />
 
 
-<meta name="date" content="2023-12-09" />
+<meta name="date" content="2023-12-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -169,21 +169,70 @@ div.csl-indent {
 <div id="ընդհանուր-ակունքով-ուժեղարար" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Ընդհանուր ակունքով ուժեղարար։<a href="մեկ-տրանզիստորով-single-stage-ուժեղարարներ.html#ընդհանուր-ակունքով-ուժեղարար" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
-<img src="imige/cs.png" alt="..." width="100%" />
+<img src="imige/cs.png" alt="..." width="30%" />
 <p class="caption">
 Figure 2.1: …
 </p>
 </div>
 <p>ՄՕԿ տրանզիստորի և ռեզիստորի նկ (2.1) պատկերված կոմբինացիան հանդսանում է ընդհանուր ակունքով
 «Common-Source» ուժեղարարար։ ՄՕԿ֊ի ՎԱԲ֊ից հայտնի է որ փականի պոտենցիալի փոփոխությունը
-բերում է ըմբիչով անցնող հոսանքի փոփոխության։ Ըմբիչով անցնող Հոսանքը ընդհանուր է և նուին
+բերում է ըմբիչով անցնող հոսանքի փոփոխության։ Ըմբիչով անցնող Հոսանքը ընդհանուր է և նույն
 հոսանքը անցնում է նաև դիմադրությունով <strong>«բեռի բացակայության դեպքում»</strong> որը ելքում ստեղծում է
-պոտենցիալ: Երբ մուտքի լարումը <span class="math inline">\(V_{in} = 0\)</span> <span class="math inline">\(M_1\)</span> տրանզիստորը փակ կլինի նշանակում է շղթայով
+պոտենցիալ: Երբ մուտքի լարումը <span class="math inline">\(V_{in} &lt; V_{TH}\)</span> <span class="math inline">\(M_1\)</span> տրանզիստորը փակ կլինի նշանակում է շղթայով
 հոսանք չի անցնի հետևաբար <span class="math inline">\(V_{out} = V_{DD}\)</span>: <span class="math inline">\(V_{in}&gt; V_{TH}\)</span> այն արժեքների համար
 երբ <span class="math inline">\(V_{out}&gt;V_{in} - V_{TH}\)</span> ՄՕԿ֊ը հագեցման ռեժիմում է հետևաբար՝</p>
-<span class="math display" id="eq:5">\[\begin{equation}
-  V_{out}  = V_{DD} - R_{D} \frac{1}{2} μ_n C_{ox} \frac{W}{L&#39;} (V_{in} - V_{TH})^2
+<span class="math display" id="eq:1">\[\begin{equation}
+  V_{out}  = V_{DD} - R_{D} \frac{1}{2} μ_n C_{ox} \frac{W}{L} (V_{in} - V_{TH})^2
   \tag{2.1}
+\end{equation}\]</span>
+<p>(2.1)֊ում հաշվի առնված չէ հոսքուղու մոդուլացիան։ Մուտքային լարման հետագա մեծացումը կբերի նրան որ
+<span class="math inline">\(V_{out} &lt; V_{in} - V_{TH}\)</span> և ՄՕԿ֊ը կգտնվի գծային <strong>Triode</strong> ռեժիմում հետևաբար՝</p>
+<span class="math display" id="eq:2">\[\begin{equation}
+  V_{out}  = V_{DD} - R_{D} \frac{1}{2} μ_n C_{ox} \frac{W}{L} [2(V_{in} - V_{TH})V_{out} - V_{out}^2]
+  \tag{2.2}
+\end{equation}\]</span>
+<p>ՈՒժեղարարների նափագծման ժամանակ պետք է համոզվել ու ՄՈԿ֊ը գտնվում է հագեցման ռեժիմում։
+Քանի որ գծային ռեծիմում ըմբիչի հոսանքը կախած է նաև ըմբիչի լարումից <span class="math inline">\(\pmb{V_{out}}\)</span>֊ից
+«ՄՕԿ֊ը հանդես է գալիս որպես ղեկավարվող դիմադրություն» ստացվում է ելքի արժեքը կախված է
+ելքից <strong>«ոչ ցանկալի հետադարց կապ»</strong> ինչպես նաև կունենանք փոքր ուժեղացման գործակից։</p>
+<p>Ուսումնասիրությունները սկսենք փոքր ազդանշան մոդելից։ Եթե <span class="math inline">\(V_{out}&gt;V_{in} - V_{TH}\)</span> կունենանք՝</p>
+<span class="math display" id="eq:3">\[\begin{equation}
+  A_v = \frac{\partial V_{out}}{\partial V_{in}} = - R_{D}  μ_n C_{ox} \frac{W}{L} (V_{in} - V_{TH}) = -g_m R_D
+  \tag{2.3}
+\end{equation}\]</span>
+<p>Պարզ մաթ․ ձևափոխությունների արձյունքում ստացվում եմ հետագայում օգտակար հետևյալ արտահայտությունը՝</p>
+<span class="math display" id="eq:4">\[\begin{equation}
+  A_v = - \sqrt{2 μ_n C_{ox} \frac{W}{L} I_D} \frac{V_{RD}}{I_D} = - \sqrt{2 μ_n C_{ox} \frac{W}{L} \frac{1}{I_D}}V_{RD}
+  \tag{2.4}
+\end{equation}\]</span>
+<p>որտեղ <span class="math inline">\(V_{RD}\)</span>֊ը դիմադրության վրա ընկած լարման անկումն է։</p>
+<p>(2.3) արտահայտության մեջ <span class="math inline">\(g_m\)</span>֊ը ՄՕԿ֊ի փոխանցման գործակիցն է ըստ փոքր ազդանշան մոդելի
+ազդանշանը փոքր ամպլիտուդով փոփոխվում է <span class="math inline">\(V_b\)</span> հաստատուն լարման շուրջ։ <span class="math inline">\(V_b\)</span> շեղման
+«bias» լարումը ընտրում է ուժեղարարի աշխատանքային կետը։ Իրականում ազդանշանները
+հիմնականում փոքր ամպլիտուդով ժամանակից կախված մեծություններ են որոնց արժեքը չի
+գերազանցում շեմաին լարումը և անպայման պետք է ավելացնել շեղման լարում։ Այդպիսի ազդանշանի
+օրինակ է բարձրախոսից ստացված ազդանշանը որի թվային արժեքը մվ֊է։ <span class="math inline">\(V_b\)</span> աշխատանքային կետում
+ՄՕԿ֊ի փոխանցման գործակիցը կլինի՝ <span class="math inline">\(g_{mV_b} = μ_n C_{ox} \frac{W}{L} (V_b - V_{TH})\)</span>:
+Երբ մութքային ազդանշանը սկսի փոփոխվել զուգահեռ կփոփոխվի նաև ըմբիչով անցնող հոսանքը
+<span class="math inline">\(\partial {I_{D}} = g_m \partial {V_{in}}\)</span> իսկ ելքային լարումը կփոփոխվի <span class="math inline">\(R_D\)</span> անգամ ավել
+միայն երբ <span class="math inline">\(I_D\)</span> մեծանուն է <span class="math inline">\(V_{out}\)</span>-ը փոքրանում է։</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="imige/csssm.png" alt="..." width="60%" />
+<p class="caption">
+Figure 2.2: …
+</p>
+</div>
+<p>Իրականում <span class="math inline">\(V_{in}\)</span>֊ի փոփոխությունը բերում է <span class="math inline">\(g_m\)</span>֊ի փոփոխության և որքան մեծ է մուտքի
+փոփոխությունը այնքան ավելի զգալի է <span class="math inline">\(g_m\)</span>֊ի փոփոխությունը որը բերում է անցանկալի ոչ
+գծաին ձևափոխությունների և այստեղ էլ ինչպես միշտ հրաշքներ չէն լինում և անհրաժեշտ է գնալ
+փողզիջումների քանի որ լավարկելով մի պարամետրը անպայման պետք է տուժի միուսը։</p>
+<p>Երբ <span class="math inline">\(g_m\)</span> բավական մեծ է լինում ելքի լարումը մեծ ամպլիտուդ է սկսում փոփոխել քանի որ <span class="math inline">\(V_{out} = V_{DS}\)</span>
+հոսքուղու մոդուլացիա էֆեքտը սկսում է զգալի դեր ունենալ ելքի վրա և կարիք է առաջանում ներառել
+մոդելում։</p>
+<span class="math display" id="eq:4">\[\begin{equation}
+V_{out}= V_{DD} − R_{D}\frac{1}{2} μ_{n}C_{ox} \frac{W}{L}(V_{in} − V_{TH})^2 (1 + λV_{out})
+  A_v = - \sqrt{2 μ_n C_{ox} \frac{W}{L} I_D} \frac{V_{RD}}{I_D} = - \sqrt{2 μ_n C_{ox} \frac{W}{L} \frac{1}{I_D}}V_{RD}
+  \tag{2.4}
 \end{equation}\]</span>
 
 </div>
