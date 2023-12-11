@@ -1,3 +1,11 @@
+
+```{r setup, include=FALSE}
+library(plotly)
+library(ggplot2)
+library(reticulate)
+```
+
+
 # Մեկ տրանզիստորով «Single-Stage» ուժեղարարներ։
 
 ՈՒժեղացումը էական ֆունկցիան է անալոգային (և շատ թվային) սխեմաներում։ 
@@ -87,8 +95,233 @@ knitr::include_graphics("imige/csssm.png")
 
 ```{=tex}
 \begin{equation} 
-V_{out}= V_{DD} − R_{D}\frac{1}{2} μ_{n}C_{ox} \frac{W}{L}(V_{in} − V_{TH})^2 (1 + λV_{out})
-  A_v = - \sqrt{2 μ_n C_{ox} \frac{W}{L} I_D} \frac{V_{RD}}{I_D} = - \sqrt{2 μ_n C_{ox} \frac{W}{L} \frac{1}{I_D}}V_{RD}
-  (\#eq:4)
+V_{out}= V_{DD} − R_{D}\frac{1}{2} μ_{n}C_{ox} \frac{W}{L}(V_{in} − V_{TH})^2 (1 + λV_{out})\\
+(\#eq:4)
 \end{equation}
 ```
+
+
+```{=tex}
+\begin{equation} 
+\frac{\partial{V_{out}}}{\partial{V_{in}}} =  -R_{D} μ{n}C{ox} \frac{W}{L}(V_{in} − V_{TH})(1 + λV_{out})\\
+ - R_{D}\frac{1}{2} μ{n}C{ox} \frac{W}{L}(V_{in} − V_{TH})^2 λ\frac{\partial{V_{out}}}{\partial{V_{in}}}
+  (\#eq:5)
+\end{equation}
+```
+
+հաշվի առնելով որ՝ $\frac{1}{r_o} = \frac{1}{2} μ{n}C{ox} \frac{W}{L}(V_{in} − V_{TH})^2 λ$ 
+ուժեղացման գործակցի համար կունենանք՝
+
+```{=tex}
+\begin{equation} 
+A_v = -g_m \frac{r_0 R_D}{r_0 + R_D} 
+  (\#eq:6)
+\end{equation}
+```
+
+```{r, echo=FALSE, out.width='60%', fig.align='center', fig.cap='...'}
+knitr::include_graphics("imige/csssmcm.png")
+```
+
+Նկարում պատկերված է մոդելը որտեղից շատ անգամ ավելի հեշտ ստացվում է (2.6)֊ը։ 
+
+```{=tex}
+\begin{equation} 
+\frac{V_{out}}{V_{in}} = -g_m R_D || r_0
+  (\#eq:7)
+\end{equation}
+```
+
+
+:::::: {.cols data-latex=""}
+
+::: {.col data-latex="{0.7\textwidth}"}
+
+```{r, echo=FALSE, out.width="600px", fig.align='center', fig.cap='...'}
+knitr::include_graphics("imige/csic.png")
+```
+:::
+
+::: {.col data-latex="{0.1\\textwidth}"}
+  <!-- an empty Div (with a white space), serving as
+a column separator -->
+:::
+
+::: {.col data-latex="{0.2\textwidth}"}
+Որպիսի մեկ ՄՕԿ֊ով ստանանք առավելագույն ուժեղացման գործակից $R_D$-ը պետք է ունենա անվերջ 
+մեծ արժեք։ Հնարաոր առավելագույն ուժեղացումը տեղի կունենա երբ ռեզիստորը փոխարինենք հոսանքի 
+աղբյուրով։ Ուժեղացման այդ արժեքը կոչվում է սեփական։ 
+
+
+:::
+::::::
+
+```{=tex}
+\begin{equation} 
+A_v = - g_m r_0
+  (\#eq:8)
+\end{equation}
+```
+Թվում է թէ առաջանում է հակասություն չէ որ հոսանքի աղբյուրի արժեքը կարող է չհամնկնել $I_D$ 
+արժեքին չէ որ մենք ասում էնք ՄՕԿ֊ը նույնպես հոսանքի աղբյուր է սակայն երբ սկսում ենք հաշվի 
+առնել հոսքուղու մոդուլացիաի էֆեքտը ամեն ինչ հարթվում է։
+
+```{=tex}
+\begin{equation} 
+I_1 = \frac{1}{2} μ_{n}C_{ox} \frac{W}{L}(V_{in} − V_{TH})^2 (1 + λV_{out})
+  (\#eq:9)
+\end{equation}
+```
+Նախքան հաջորդ միացման անցնելը կազմենք «Spice» նկարագրությունը և կատարենք մաթեմատիկական 
+մոդելաորում։ 
+
+`XM1 out input GND GND nfet_01v8_lvt w=1 l=0.5` <br />
+`Rd vdd out 'res'` <br />
+`Vvdd vdd GND 2` <br />
+`Vvin input GND 1.8` <br />
+
+`dc Vvin 0 4 0.01 Rd 300 1500 300`
+
+```{r  echo=FALSE, fig.cap='...', out.width='100%', fig.align='center'}
+df <- read.csv('./sp_data/cs_dcAnalys.csv')
+pal <- c("green", "blue4", "magenta", "red", "goldenrod", "darkorange", "purple4", "indianred","yellow","plum", "gray")
+pal <- setNames(pal, unique(df$rez))
+fig <- plot_ly()%>%
+  add_trace(data = df , x = ~Vin, 
+            y= ~Vout , color = ~rez,
+            type ='scatter',  mode = 'lines', 
+            orientation = 'h', text = ~ rez,
+            hovertemplate = paste('<br><b>Rdr</b>:%{text}<br>', 
+                                  '<i>Vout</i>: %{y}</br>', 
+                                  '<i>Vin</i>: %{x}'), 
+            colors = pal)%>%
+            add_trace(x= ~c(0.5 ,2.3), y= ~c(0, 1.8),
+             type ='scatter',  mode = 'lines',
+             name = 'Vout = Vin - Vth')%>%
+    layout( title = "Ելքի լարման կախումը մութքի լարումից։", legend=list(title=list(text='Rdr')),
+          ##plot_bgcolor='#e5ecf6', 
+          xaxis = list( 
+            title = 'Մութքի լարումը։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'
+            ), 
+          yaxis = list( 
+            title = 'Ելքի լարումը։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'),
+          #bargap = 1
+          ))
+fig
+```
+
+```{r  echo=FALSE, fig.cap='...', out.width='100%', fig.align='center'}
+df <- read.csv('./sp_data/cs_dcAnalys.csv')
+pal <- c("green", "blue4", "magenta", "red", "goldenrod", "darkorange", "purple4", "indianred","yellow","plum")
+pal <- setNames(pal, unique(df$rez))
+fig <- plot_ly()%>%
+  add_trace(data = df , x = ~Vin, 
+            y= ~gain , color = ~rez,
+            type ='scatter',  mode = 'lines', 
+            orientation = 'h', text = ~ rez,
+            hovertemplate = paste('<br><b>Rdr</b>:%{text}<br>', 
+                                  '<i>Gain</i>: %{y}</br>', 
+                                  '<i>Vin</i>: %{x}'), 
+            colors = pal)%>%
+    layout( title = "ՈՒժեղացման գործակցի կախումը մութքի լարումից։", legend=list(title=list(text='Rdr')),
+          ##plot_bgcolor='#e5ecf6', 
+          xaxis = list( 
+            title = 'Մութքի լարումը։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'
+            ), 
+          yaxis = list( 
+            title = 'ՈՒժեղացման գործակից։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'),
+          #bargap = 1
+          ))
+fig
+```
+
+Նկ․ (2.5) և (2.6) «Spice» հետազոտության արդյունքների հիման վրա կազմված գրաֆիկներ են։ 
+(2.5)֊ում կապույտ գիծը տրվում է $V_{out} = V_{in} - V_{TH}$ հավասարումով հետևաբար կորերի 
+և գծի հատման կետերը դա մութքային լարման այն սահմանային արժեքն է որից մեծ լարման դեպքում 
+ՄՕԿ֊ը սկսում է աշխատել գծաին ռեժիմում։ Աշխատանքային ռեժիմի փոփոխության կետը վառ 
+արտահայտված է նկ․(2.6)֊ում երբ ուժեղացման գործակիցը սկսում է նվազել։ Ինչպես տեսնում ենք մեծ 
+դիմադրությամբ ուժեղարարը ունի ավելի մեծ ուժեղացման գործակից սակայն արագագործությամբ զիջում է 
+ավելի փոքր դիմադրությամբ ուժեղարարներին։ Քանի որ փոքր դիմադրությունը նշանակում է թույլ հոսանք 
+իսք հոսանքը լիցկակիրների շարժման քանաքական բնութագիր է հետևաբար լիցքակիրներին շարժման 
+մեջ դնելու համար կպահանջվի ավելի երկար ժամանակ։ 
+
+```{r  echo=FALSE, fig.cap='...', out.width='100%', fig.align='center'}
+df <- read.csv('./sp_data/cs_dcAnalys.csv')
+pal <- c("green", "blue4", "magenta", "red", "goldenrod", "darkorange", "purple4", "indianred","yellow","plum", "gray")
+pal <- setNames(pal, unique(df$rez))
+fig <- plot_ly()%>%
+  add_trace(data = df , x = ~Vin, 
+            y= ~Vout , color = ~rez,
+            type ='scatter',  mode = 'lines', 
+            orientation = 'h', text = ~ rez,
+            hovertemplate = paste('<br><b>Rdr</b>:%{text}<br>', 
+                                  '<i>Vout</i>: %{y}</br>', 
+                                  '<i>Vin</i>: %{x}'), 
+            colors = pal)%>%
+            add_trace(x= ~c(0.5 ,2.3), y= ~c(0, 1.8),
+             type ='scatter',  mode = 'lines',
+             name = 'Vout = Vin - Vth')%>%
+    layout( title = "Ելքի լարման կախումը մութքի լարումից։", legend=list(title=list(text='Rdr')),
+          ##plot_bgcolor='#e5ecf6', 
+          xaxis = list( 
+            title = 'Մութքի լարումը։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'
+            ), 
+          yaxis = list( 
+            title = 'Ելքի լարումը։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'),
+          #bargap = 1
+          ))
+fig
+```
+
+```{r  echo=FALSE, fig.cap='...', out.width='100%', fig.align='center'}
+df <- read.csv('./sp_data/csidxs.csv')
+pal <- c("green", "blue4", "magenta", "red", "goldenrod", "darkorange", "purple4", "indianred","yellow","plum")
+pal <- setNames(pal, unique(df$rez))
+fig <- plot_ly()%>%
+  add_trace(data = df , x = ~Vin, 
+            y= ~gain , color = ~rez,
+            type ='scatter',  mode = 'lines', 
+            orientation = 'h', text = ~ rez,
+            hovertemplate = paste('<br><b>Rdr</b>:%{text}<br>', 
+                                  '<i>Gain</i>: %{y}</br>', 
+                                  '<i>Vin</i>: %{x}'), 
+            colors = pal)%>%
+    layout( title = "ՈՒժեղացման գործակցի կախումը մութքի լարումից։", legend=list(title=list(text='Rdr')),
+          ##plot_bgcolor='#e5ecf6', 
+          xaxis = list( 
+            title = 'Մութքի լարումը։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'
+            ), 
+          yaxis = list( 
+            title = 'ՈՒժեղացման գործակից։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'),
+          #bargap = 1
+          ))
+fig
+```
+
+
+
+### Ընդհանուր ակունքով ուժեղարար միացված դիոդով։
