@@ -18,11 +18,11 @@ editor_options:
     wrap: 72
 ---
 
-```{r setup, include=FALSE}
+```{r  include=FALSE}
 library(plotly)
 library(ggplot2)
 library(reticulate)
-use_python("/usr/bin/python3")
+use_python("/../usr/bin/python3")
 ```
 
 ```{python}

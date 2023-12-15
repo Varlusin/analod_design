@@ -5,7 +5,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">ՕՊԵՌԱՑԻՈՆ ՈՒԺԵՂԱՐԱՐՆԵՐ։</a></li>
       after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+        <li><a href="https://github.com/Varlusin/analod_design.git" target="blank">Github</a></li>
     edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:
