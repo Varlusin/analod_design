@@ -188,8 +188,7 @@ fig <- plot_ly()%>%
             y= ~Vout , color = ~rez,
             type ='scatter',  mode = 'lines', 
             orientation = 'h', text = ~ rez,
-            hovertemplate = paste('<br><b>Rdr</b>:%{text}<br>', 
-                                  '<i>Vout</i>: %{y}</br>', 
+            hovertemplate = paste('<br><b>Vout</b>:%{y:.3f}<br>', 
                                   '<i>Vin</i>: %{x}'), 
             colors = pal)%>%
             add_trace(x= ~c(0.5 ,2.3), y= ~c(0, 1.8),
@@ -222,8 +221,7 @@ fig <- plot_ly()%>%
             y= ~gain , color = ~rez,
             type ='scatter',  mode = 'lines', 
             orientation = 'h', text = ~ rez,
-            hovertemplate = paste('<br><b>Rdr</b>:%{text}<br>', 
-                                  '<i>Gain</i>: %{y}</br>', 
+            hovertemplate = paste('<br><b>Gain</b>:%{y:.f3}<br>',  
                                   '<i>Vin</i>: %{x}'), 
             colors = pal)%>%
     layout( title = "ՈՒժեղացման գործակցի կախումը մութքի լարումից։", legend=list(title=list(text='Rdr')),

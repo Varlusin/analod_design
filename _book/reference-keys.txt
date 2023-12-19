@@ -36,6 +36,11 @@ eq:15
 fig:unnamed-chunk-26
 eq:16
 fig:unnamed-chunk-28
+fig:unnamed-chunk-29
+fig:unnamed-chunk-30
+fig:unnamed-chunk-31
+fig:unnamed-chunk-32
+fig:unnamed-chunk-33
 ներածություն
 մօկ-մետաղ-օքսիդ-կիսահաղորդիչ-տռանզիստորներ
 շեմային-treshold-լարում
@@ -52,5 +57,7 @@ body-էֆեքտ
 ընդանուրակունք-տոպոլոգիան-փակված-ակտիվ-տարով
 դիֆերենցիալ-ուժեղարարար
 դիֆերենցիալ-ազդանշան
-fig:unnamed-chunk-2
 դիֆերենցիալ-զույգ
+մեծ-ազդանշանային-վարքագիծ
+fig:unnamed-chunk-2
+փոքրազդանշանի-վերլուծություն
