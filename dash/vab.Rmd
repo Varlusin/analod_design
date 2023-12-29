@@ -22,7 +22,8 @@ library(flexdashboard)
 ### ՎԱԲ֊Ը 3D ՊԱՏԿԵՐՄԱՄԲ
 
 ```{r}
-df <- read.csv('/home/vardan/Documents/pdk_130/mos/sp_data/nvab3d.csv')
+df <- read.csv(url('https://github.com/Varlusin/analod_design/raw/main/sp_data/nvab3d.csv'))
+
 df<-df[2: 62]
 Vds <- seq(from = 0, to = 1.8, by = 0.03)
 Vgs<- seq(0, 1.8, 0.03)
@@ -43,8 +44,7 @@ fig
 ### Ըմբիչի հոսանքը փական֊ակունք տարբեր լարումների համար։
 
 ```{r}
-df <- read.csv('/home/vardan/Documents/pdk_130/mos/sp_data/vabnmos.csv')
-
+df <- read.csv(url("https://github.com/Varlusin/analod_design/raw/main/sp_data/vabnmos.csv"))
 pal <- c( "red", "blue","orange", "green",  "magenta")
 pal <- setNames(pal, unique(df$Vds))
 
@@ -123,7 +123,7 @@ fig
 ### Ըմբիչի հոսանքը փական֊ակունք տարբեր լարումների համար։
 
 ```{r}
-df <- read.csv('/home/vardan/Documents/pdk_130/mos/sp_data/vabpmos.csv')
+df <- read.csv(url("https://github.com/Varlusin/analod_design/raw/main/sp_data/vabpmos.csv"))
 
 pal <- c( "red", "blue","orange", "green",  "magenta")
 pal <- setNames(pal, unique(df$Vds))
