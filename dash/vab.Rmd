@@ -209,7 +209,6 @@ Vgs g GND 1.8
 dc Vgs 0 1.8 0.03 Vds 0 1.8 0.03
 write $inputdir/filename.raw
 .endc
-
 .end
 ```
 
@@ -217,10 +216,13 @@ write $inputdir/filename.raw
 
 ### ՊՄՕԿ
 
+```
 .lib /usr/local/share/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt
 .GLOBAL GND
 
-XM1 d g GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 
+XM1 d g vdd vdd sky130_fd_pr__pfet_01v8 L=0.15 W=1 nf=1 
+
+Vvdd vdd GND 1.8
 Vds d GND 1.8
 Vgs g GND 1.8
 
@@ -230,7 +232,8 @@ Vgs g GND 1.8
 
 .control
 dc Vgs 0 1.8 0.03 Vds 0 1.8 0.03
-write $inputdir/filename.raw
+plot -I(Vds)
+write $inputdir/pvab3d.raw
 .endc
-
 .end
+```
