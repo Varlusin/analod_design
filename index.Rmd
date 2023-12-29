@@ -564,13 +564,18 @@ g_{mb} = η g_m
 փոքրացումը, արտադրական պռոցեսներում որոշ պարամետրերի պատահական շեղումները բերել է նրան 
 որ այդքան էլ հեշտ չէ միանշանակ բնութագրել ՄՕԿ֊ին։ Որպիսի նախագծողը համոզված լինի, որ 
 արտադրությունից հետո սխեման կբավարարի բոլոր պահանջներին օգտվում են վիճակագրական 
-մեթոդներից։ Դիցուկ  հոսքուղու երկարությունը $L$ միջինով և ${\Sigma}$ 
+մեթոդներից։ Դիցուկ  հոսքուղու երկարությունը $L$ միջինով և $σ$ 
 ստանդարտ շեղումով նորմալ բաշխվածությամբ պատահական մեծություն է։ Որպիսի spice հետազոտության 
 մեջ նեռարվի նաև պատահական վարիացիաները oգտվում են [Monte Carlo](https://en.wikipedia.org/wiki/Monte_Carlo_method){target="_blank"} 
 մեթոդից։
 
+
+Նկ (1.14)֊ում պատկերված է spice մոդելի տոպոլոգիան։ Այս տոպոլոգիան կարող է փոփոփշխվել 
+կախված մոդելի մակարդակից։
+
+
 ```{r, echo=FALSE, out.width='100%', fig.align='center', fig.cap='...'}
-knitr::include_graphics("imige/spmodel.gif")
+knitr::include_graphics("imige/spmodel.jpg")
 ```
 
 Այս աշխատանքում, որպես մոդելաորման միջոց օգտագործվել է
@@ -581,8 +586,8 @@ knitr::include_graphics("imige/spmodel.gif")
 նպատակներով և դրանց ճշտությունը բավարար չէ կոնվերցիոն նպատակներով
 օգտագործվել համար։
 
-Տրանզիստորներ ՎԱԲ֊ի հետազոտման համար մոդելավորենք նկարում պատկերված
-սխեման։
+Որպես եզրափակիչ մաս ՄOԿ֊ի ՎԱԲ֊ի հետազոտման համար կազմենք netlist նկարում պատկերված 
+սխեմաների համար։
 
 ::: {.cols data-latex=""}
 ::: {.col data-latex="{0.6\\textwidth}"}
@@ -619,50 +624,10 @@ Spice նկարագրությունը անհրաժեշտ է ավելացնել հ
 -   $V_{GS}$ լարումը փոփոխվի (0 , 1.8) միջակայքում 0.01 քայլով։
 -   $V_{DS}$ լարումը փոփոխվի (0.2 , 1.8) միջակայքում 0.5 քայլով։
 
-```{r  echo=FALSE, fig.cap='...', out.width='100%', fig.align='center'}
-df <- read.csv('./sp_data/vgs.csv')
-fig1 <- plot_ly(df, x = ~Vgs, y = ~Idr18, name = 'Vd = 1.8(Վ)', type = 'scatter', mode = 'lines') 
-fig1 <- fig1 %>% add_trace(y = ~Idr05, name ='Vd= 0.5(Վ)', mode = 'lines') 
-fig1 <- fig1 %>% add_trace(y  = ~Idr02, name = 'Vd = 0.2(Վ)', mode = 'lines')
-fig1<- fig1 %>%layout(legend = list(x = 1, y = 0.5))
-fig1<- fig1 %>%layout(xaxis = list(range = c(0.4, 1.8)))
 
-df <- read.csv('./sp_data/vds.csv')
-fig2 <- plot_ly(df, x = ~Vds, y = ~Idr18, name = 'Vg = 1.8(Վ)', type = 'scatter', mode = 'lines') 
-fig2 <- fig2 %>% add_trace(y = ~Idr14, name = 'Vg = 1.4(Վ)', mode = 'lines') 
-fig2 <- fig2 %>% add_trace(y  = ~Idr10, name = 'Vg = 1(Վ)', mode = 'lines')
-fig2<- fig2 %>%layout(legend = list(x = 1, y = 0.5))
+[ ![](./imige/vab.png) ](vab.html){target="_blank"}
 
-fig <- subplot(fig1, fig2,nrows = 2, titleY = FALSE, titleX = FALSE, margin = 0.05)
-fig <- fig %>%layout( 
-         yaxis = list( 
-          title = 'ԸՄԲԻՉՈՎ ԱՆՑՆՈՂ ՀՈՍԱՆՔԸ։'))
 
-annotations = list( 
-  list( 
-    x = 0.5,  
-    y = 1,  
-    text = "ՓԱԿԱՆ ԱԿՈՒՆՔ ԼԱՐՈՒՄԸ:",  
-    xref = "paper",  
-    yref = "paper",  
-    xanchor = "center",  
-    yanchor = "bottom",  
-    showarrow = FALSE 
-  ),  
-  list( 
-    x = 0.5,  
-    y = 0.45,  
-    text = "ԸՄԲԻՉ ԱԿՈՒՆՔ ԼԱՐՈՒՄԸ:",  
-    xref = "paper",  
-    yref = "paper",  
-    xanchor = "center",  
-    yanchor = "bottom",  
-    showarrow = FALSE 
-  ))
-fig <- fig %>%layout(annotations = annotations) 
-fig
-
-```
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages

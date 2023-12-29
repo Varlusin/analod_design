@@ -1,0 +1,236 @@
+---
+title: "ՎՈԼՏ֊ԱՄՊԵՐ ԲՆՈՒԹԱԳԻՐ"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    social: menu
+    source_code: embed
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(plotly)
+library(plyr)
+library(flexdashboard)
+
+```
+
+# ՆՄՕԿ
+
+## Column {data-width="600"}
+
+### ՎԱԲ֊Ը 3D ՊԱՏԿԵՐՄԱՄԲ
+
+```{r}
+df <- read.csv('/home/vardan/Documents/pdk_130/mos/sp_data/nvab3d.csv')
+df<-df[2: 62]
+Vds <- seq(from = 0, to = 1.8, by = 0.03)
+Vgs<- seq(0, 1.8, 0.03)
+I <- data.matrix(df, rownames.force = NA)
+
+
+fig <- plot_ly(
+  x = ~Vgs,
+  y = ~Vds,
+  z = ~I)%>% add_surface()
+
+fig
+
+```
+
+## Column {data-width="400"}
+
+### Ըմբիչի հոսանքը փական֊ակունք տարբեր լարումների համար։
+
+```{r}
+df <- read.csv('/home/vardan/Documents/pdk_130/mos/sp_data/vabnmos.csv')
+
+pal <- c( "red", "blue","orange", "green",  "magenta")
+pal <- setNames(pal, unique(df$Vds))
+
+
+fig <- plot_ly(df, color =  ~Vds, colors = pal , legendgroup = ~Vds , type ='scatter', mode = 'lines')
+
+fig <- fig%>%
+  add_trace(
+    y= ~ -Iddrane , x= ~vin, color = ~Vds,
+    orientation = 'h'  #text = ~ rez,
+    #hovertemplate = paste('<br><b>Vout</b>:%{y:.3f}<br>', 
+    #                     '<i>Vin</i>: %{x}'), 
+  )%>%
+  layout(legend=list(title=list(text='Vds', x = 1, y = 0.5)),
+          xaxis = list( 
+            title = 'ԸՄԲԻՉ ԱԿՈՒՆՔ ԼԱՐՈՒՄԸ։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'
+          ), 
+          yaxis = list( 
+            title = 'ԸՄԲԻՉԻ ՀՈՍԱՆՔԸ։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'),
+            #bargap = 1
+          ))
+fig
+
+```
+
+### Ըմբիչի հոսանքը ըմբիչ֊ակունք տարբեր լարումների համար։
+
+```{r}
+pal <- c( "red", "blue","orange", "green",  "magenta")
+pal <- setNames(pal, unique(df$Vgs))
+
+
+fig <- plot_ly(df, color =  ~Vgs, colors = pal , legendgroup = ~Vgs , type ='scatter', mode = 'lines')
+
+fig <- fig%>%
+  add_trace(
+    y= ~ -Idgate , x= ~vin, color = ~Vgs,
+    orientation = 'h'  #text = ~ rez,
+    #hovertemplate = paste('<br><b>Vout</b>:%{y:.3f}<br>', 
+    #                     '<i>Vin</i>: %{x}'), 
+  )%>%
+  layout(legend=list(title=list(text='Vgs', x = 1, y = 0.5)),
+          xaxis = list( 
+            title = 'ԸՄԲԻՉ ԱԿՈՒՆՔ ԼԱՐՈՒՄԸ։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'
+          ), 
+          yaxis = list( 
+            title = 'ԸՄԲԻՉԻ ՀՈՍԱՆՔԸ։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'),
+            #bargap = 1
+          ))
+fig
+```
+
+# ՊՄՕԿ
+
+## Column {data-width="600"}
+
+### ՎԱԲ֊Ը 3D ՊԱՏԿԵՐՄԱՄԲ
+
+```{r}
+```
+
+## Column {data-width="400"}
+
+### Ըմբիչի հոսանքը փական֊ակունք տարբեր լարումների համար։
+
+```{r}
+df <- read.csv('/home/vardan/Documents/pdk_130/mos/sp_data/vabpmos.csv')
+
+pal <- c( "red", "blue","orange", "green",  "magenta")
+pal <- setNames(pal, unique(df$Vds))
+
+
+fig <- plot_ly(df, color =  ~Vds, colors = pal , legendgroup = ~Vds , type ='scatter', mode = 'lines')
+
+fig <- fig%>%
+  add_trace(
+    y= ~ -Iddrane , x= ~vin, color = ~Vds,
+    orientation = 'h'  #text = ~ rez,
+    #hovertemplate = paste('<br><b>Vout</b>:%{y:.3f}<br>', 
+    #                     '<i>Vin</i>: %{x}'), 
+  )%>%
+  layout(legend=list(title=list(text='Vds', x = 1, y = 0.5)),
+          xaxis = list( 
+            title = 'ԸՄԲԻՉ ԱԿՈՒՆՔ ԼԱՐՈՒՄԸ։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'
+          ), 
+          yaxis = list( 
+            title = 'ԸՄԲԻՉԻ ՀՈՍԱՆՔԸ։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'),
+            #bargap = 1
+          ))
+fig
+```
+
+### Ըմբիչի հոսանքը ըմբիչ֊ակունք տարբեր լարումների համար։
+
+```{r}
+pal <- c( "red", "blue","orange", "green",  "magenta")
+pal <- setNames(pal, unique(df$Vgs))
+
+
+fig <- plot_ly(df, color =  ~Vgs, colors = pal , legendgroup = ~Vgs , type ='scatter', mode = 'lines')
+
+fig <- fig%>%
+  add_trace(
+    y= ~ -Idgate , x= ~vin, color = ~Vgs,
+    orientation = 'h'  #text = ~ rez,
+    #hovertemplate = paste('<br><b>Vout</b>:%{y:.3f}<br>', 
+    #                     '<i>Vin</i>: %{x}'), 
+  )%>%
+  layout(legend=list(title=list(text='Vgs', x = 1, y = 0.5)),
+          xaxis = list( 
+            title = 'ԸՄԲԻՉ ԱԿՈՒՆՔ ԼԱՐՈՒՄԸ։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'
+          ), 
+          yaxis = list( 
+            title = 'ԸՄԲԻՉԻ ՀՈՍԱՆՔԸ։'
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'),
+            #bargap = 1
+          ))
+fig
+```
+
+# SPICE NETLIST
+
+## Column
+
+### ՆՄՕԿ
+```
+.lib /usr/local/share/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+.GLOBAL GND
+
+XM1 d g GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 
+Vds d GND 1.8
+Vgs g GND 1.8
+
+.save V(g)
+.save V(d)
+.save I(Vds)
+
+.control
+dc Vgs 0 1.8 0.03 Vds 0 1.8 0.03
+write $inputdir/filename.raw
+.endc
+
+.end
+```
+
+## Column
+
+### ՊՄՕԿ
+
+.lib /usr/local/share/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt
+.GLOBAL GND
+
+XM1 d g GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 
+Vds d GND 1.8
+Vgs g GND 1.8
+
+.save V(g)
+.save V(d)
+.save I(Vds)
+
+.control
+dc Vgs 0 1.8 0.03 Vds 0 1.8 0.03
+write $inputdir/filename.raw
+.endc
+
+.end

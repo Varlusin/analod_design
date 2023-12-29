@@ -237,6 +237,7 @@ for(i in unicVb){
 
 
 fig <- subplot( fig1, fig2, fig3, nrows = 3,  margin = 0.05, shareX = T, titleY = FALSE, titleX = FALSE)
+
 annotations = list( 
   list( 
     x = 0.5,  
@@ -386,7 +387,7 @@ fig2 <- plot_ly(df , x = ~time,  y = ~(ip + im), type = 'scatter',
 fig2 <- fig2%>% layout(autosize = T,
                        title = "Դիֆերանցիալ զույգի ելքը։"
                       )
-fig <- subplot( fig1, fig2,  nrows = 2,  margin = 0.05, shareX = T)
+fig <- subplot( fig1, fig2,  nrows = 2,   heights = c(0.7, 0.3), shareX = T)
 
 fig
   
@@ -421,7 +422,7 @@ fig2 <- plot_ly(df , x = ~time,  y = ~(ip + im), type = 'scatter',
 fig2 <- fig2%>% layout(autosize = T,
                        title = "Դիֆերանցիալ զույգի ելքը։"
                       )
-fig <- subplot( fig1, fig2,  nrows = 2,  margin = 0.05, shareX = T)
+fig <- subplot( fig1, fig2,  nrows = 2,  heights = c(0.7, 0.3),  shareX = T)
 
 fig
   
