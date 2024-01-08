@@ -1,105 +1,83 @@
 library(plotly) 
 library(ggplot2)
-df <- read.csv('./sp_data/nvab3d.csv')
-df<-df[2: 62]
-Vds <- seq(from = 0, to = 1.8, by = 0.03)
-Vgs<- seq(0, 1.8, 0.03)
-I <- data.matrix(df, rownames.force = NA)
 
+df <- read.csv(url("https://github.com/Varlusin/analod_design/raw/main/sp_data/cs_dcAnalys.csv"))
 
-fig <- plot_ly(
-  x = ~Vgs,
-  y = ~Vds,
-  z = ~I)%>% add_surface()
+pal <- c("green", "blue", "magenta", "red", "goldenrod", "darkorange", "purple4", "indianred","yellow","plum", "gray")
+pal <- setNames(pal, unique(df$rez))
+l <- list(
+  font = list(
+    family = "sans-serif",
+    size = 10,
+    color = "#000"),
+  bgcolor = "#E2E2E2",
+  bordercolor = "#FFFFFF",
+  borderwidth = 2, orientation = 'h')
 
-fig
-
-
-fig <- fig %>% layout(
-  scene = list(
-    xaxis = list(nticks = 20),
-    zaxis = list(nticks = 4),
-    camera = list(eye = list(x = 0, y = -1, z = 0.5)),
-    aspectratio = list(x = .9, y = .8, z = 0.2)))
-
-fig
-
-
-
-
-
-unicv <- unique(df$Vds)
-unicv
-
-fig <-plot_ly()
-
-for(i in unicv) {
-  fig <- fig %>%add_trace(data = df[df$Vgs == i,], x = ~vin,  y = ~ -Iddrane, 
-                          type = 'scatter', mode = 'lines',
-                          colar = ~satdrane
-                          
-                          )
+fig1 <- plot_ly()%>%
+  add_trace(data = df , x = ~Vin, y= ~Vout , color = ~rez,
+            type ='scatter',  mode = 'lines', text = ~ rez,
+            hovertemplate = paste('<br><b>Vout</b>:%{y:.3f}<br>', 
+                                  '<i>Vin</i>: %{x}'), 
+            colors = pal,
+            line = list( width = 3), legendgroup = ~rez
+            )%>%
   
-}
-
-fig <- fig %>%add_trace(data = df[df$Vgs == "1.2(Վ)",], x = ~vin,  y = ~ -Idgate, 
-                        type = 'scatter', mode = 'lines',
-                        colar = ~satdrane,
-                        legendgroup = ~satdrane
-)
-
-fig
-
-
-
-
-
-
-
-
-
-pal <- c( "red", "blue","orange", "green",  "magenta")
-pal <- setNames(pal, unique(df$Vds))
-
-fig <- plot_ly(df, color =  ~satdrane, legendgroup = ~satdrane , type ='scatter', mode = 'lines')
-
-fig <- fig%>%
-  add_trace(
-    y= ~ -Iddrane , x= ~vin, color = ~satdrane,
-    #orientation = 'h',  #text = ~ rez,
-    #hovertemplate = paste('<br><b>Vout</b>:%{y:.3f}<br>', 
-    #                     '<i>Vin</i>: %{x}'), 
-    transforms = list(
-      list(
-        type = 'groupby',
-        groups = df$Vgs
-        #styles = list(
-         # list(target = 4, value = list(marker =list(color = 'blue'))),
-          #list(target = 6, value = list(marker =list(color = 'red'))),
-          #list(target = 8, value = list(marker =list(color = 'black')))
-        #)
-      )
-    )
-    
-    
-    
-    )
-
-fig <- fig%>%
-  layout( title = "ՆՄՕԿ։", legend=list(title=list(text='Vgs', x = 1, y = 1)),
+  add_trace(x= ~c(0.5 ,2.3), y= ~c(0, 1.8),
+            type ='scatter',  mode = 'lines',
+            name = 'Vout = Vin - Vth',  #showlegend = F,
+            line = list(color = 'rgb(128, 128, 128)', width = 2, dash = 'dot'))%>%
+  
+  layout(
+          legend=l,
+          plot_bgcolor='#e5ecf6', 
           xaxis = list( 
-            title = 'ԸՄԲԻՉ ԱԿՈՒՆՔ ԼԱՐՈՒՄԸ։'
             #zerolinecolor = '#ffff', 
             #zerolinewidth = 2, 
             #gridcolor = 'ffff'
           ), 
           yaxis = list( 
-            title = 'ԸՄԲԻՉԻ ՀՈՍԱՆՔԸ։'
+            #zerolinecolor = '#ffff'
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff',
+            #bargap = 1
+          ))
+
+fig2 <- plot_ly()%>%
+  add_trace(data = df , x = ~Vin, 
+            y= ~gain , color = ~rez,
+            type ='scatter',  mode = 'lines', 
+            orientation = 'h', text = ~ rez,
+            hovertemplate = paste('<br><b>Gain</b>:%{y:.3f}<br>',  
+                                  '<i>Vin</i>: %{x}'), 
+            colors = pal, showlegend = F,
+            line = list( width = 3), legendgroup = ~rez)%>%
+  layout(
+          legend=list(title=list(text='Rdr')),
+          plot_bgcolor='#e5ecf6', 
+          xaxis = list( 
+            #zerolinecolor = '#ffff', 
+            #zerolinewidth = 2, 
+            #gridcolor = 'ffff'
+          ), 
+          yaxis = list( 
             #zerolinecolor = '#ffff', 
             #zerolinewidth = 2, 
             #gridcolor = 'ffff'),
             #bargap = 1
           ))
+
+fig <- subplot( fig1, fig2, nrows = 2, margin = 0,  shareX = T, titleY = FALSE, titleX = FALSE)
+
 fig
+
+
+#library(htmlwidgets)
+
+#saveWidget(fig, "p1.html", selfcontained = F, libdir = "lib")
+
+
+
+
 
 

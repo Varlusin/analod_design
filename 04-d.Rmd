@@ -1,0 +1,12 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# gy8gbn
+
+
+```{r vab, echo=FALSE, fig.cap="(ref:subplot-simple)", out.extra = if (knitr::is_html_output()) 'data-url="/dash/vab.html"'}
+knitr::include_graphics("imige/vab.png")
+```

@@ -1,16 +1,16 @@
 bookdown::gitbook:
   css: style.css
+  includes:
+    in_header: preamble.tex
   config:
     toc:
       before: |
         <li><a href="./">ՕՊԵՌԱՑԻՈՆ ՈՒԺԵՂԱՐԱՐՆԵՐ։</a></li>
       after: |
         <li><a href="https://github.com/Varlusin/analod_design.git" target="blank">Github</a></li>
-    edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
+    edit: https://github.com/Varlusin/analod_design/blob/main/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:
-  includes:
-    in_header: preamble.tex
   latex_engine: xelatex
   citation_package: natbib
   keep_tex: yes

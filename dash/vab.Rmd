@@ -15,6 +15,17 @@ library(flexdashboard)
 
 ```
 
+```{r include=FALSE}
+accumulate_by <- function(dat, var) {
+  var <- lazyeval::f_eval(var, dat)
+  lvls <- plotly:::getLevels(var)
+  dats <- lapply(seq_along(lvls), function(x) {
+    cbind(dat[var %in% lvls[seq(1, x)], ], frame = lvls[[x]])
+  })
+  dplyr::bind_rows(dats)
+}
+```
+
 # ՆՄՕԿ
 
 ## Column {data-width="600"}
@@ -45,33 +56,43 @@ fig
 
 ```{r}
 df <- read.csv(url("https://github.com/Varlusin/analod_design/raw/main/sp_data/vabnmos.csv"))
+df <- df[c('vin', 'Vds', 'Iddrane', 'Idgate')]
+df$vin <- (round(df$vin*1000, digits = 0))/1000
+vec <- seq(from = 0, to = 1.8, by = 0.02)
+df<-subset(df, vin %in% vec)
+df <- df %>% accumulate_by(~vin)
+
+
 pal <- c( "red", "blue","orange", "green",  "magenta")
 pal <- setNames(pal, unique(df$Vds))
 
+fig <- df %>%plot_ly( x = ~vin,  y = ~ -Iddrane, split = ~Vds, 
+                      frame = ~frame, type = 'scatter', mode = 'lines', 
+                      line = list(simplyfy = F), colors = pal
+  )
 
-fig <- plot_ly(df, color =  ~Vds, colors = pal , legendgroup = ~Vds , type ='scatter', mode = 'lines')
+fig <- fig %>% layout(legend=list(title=list(text='Vgs', x = 1, y = 0.5)),
+  xaxis = list(
+    title = 'ԸՄԲԻՉ ԱԿՈՒՆՔ ԼԱՐՈՒՄԸ։',
+    zeroline = F
+  ),
+  yaxis = list(
+    title = 'ԸՄԲԻՉԻ ՀՈՍԱՆՔԸ։',
+    zeroline = F
+  )
+) 
+fig <- fig %>% animation_opts(
+  frame = 100, 
+  transition = 0, 
+  redraw = FALSE
+)
+fig <- fig %>% animation_slider(
+  hide = T
+)
+fig <- fig %>% animation_button(
+  x = 1, xanchor = "right", y = 0, yanchor = "bottom"
+)
 
-fig <- fig%>%
-  add_trace(
-    y= ~ -Iddrane , x= ~vin, color = ~Vds,
-    orientation = 'h'  #text = ~ rez,
-    #hovertemplate = paste('<br><b>Vout</b>:%{y:.3f}<br>', 
-    #                     '<i>Vin</i>: %{x}'), 
-  )%>%
-  layout(legend=list(title=list(text='Vds', x = 1, y = 0.5)),
-          xaxis = list( 
-            title = 'ԸՄԲԻՉ ԱԿՈՒՆՔ ԼԱՐՈՒՄԸ։'
-            #zerolinecolor = '#ffff', 
-            #zerolinewidth = 2, 
-            #gridcolor = 'ffff'
-          ), 
-          yaxis = list( 
-            title = 'ԸՄԲԻՉԻ ՀՈՍԱՆՔԸ։'
-            #zerolinecolor = '#ffff', 
-            #zerolinewidth = 2, 
-            #gridcolor = 'ffff'),
-            #bargap = 1
-          ))
 fig
 
 ```
@@ -79,33 +100,34 @@ fig
 ### Ըմբիչի հոսանքը ըմբիչ֊ակունք տարբեր լարումների համար։
 
 ```{r}
-pal <- c( "red", "blue","orange", "green",  "magenta")
-pal <- setNames(pal, unique(df$Vgs))
+rm(fig)
+fig <- df %>%plot_ly( x = ~vin,  y = ~ -Idgate, split = ~Vds, 
+                      frame = ~frame, type = 'scatter', mode = 'lines', 
+                      line = list(simplyfy = F), colors = pal
+  )
 
+fig <- fig %>% layout(legend=list(title=list(text='Vds', x = 1, y = 0.5)),
+  xaxis = list(
+    title = 'ԸՄԲԻՉ ՓԱԿԱՆ ԼԱՐՈՒՄԸ։',
+    zeroline = F
+  ),
+  yaxis = list(
+    title = 'ԸՄԲԻՉԻ ՀՈՍԱՆՔԸ։',
+    zeroline = F
+  )
+) 
+fig <- fig %>% animation_opts(
+  frame = 100, 
+  transition = 0, 
+  redraw = FALSE
+)
+fig <- fig %>% animation_slider(
+  hide = T
+)
+fig <- fig %>% animation_button(
+  x = 1, xanchor = "right", y = 0, yanchor = "bottom"
+)
 
-fig <- plot_ly(df, color =  ~Vgs, colors = pal , legendgroup = ~Vgs , type ='scatter', mode = 'lines')
-
-fig <- fig%>%
-  add_trace(
-    y= ~ -Idgate , x= ~vin, color = ~Vgs,
-    orientation = 'h'  #text = ~ rez,
-    #hovertemplate = paste('<br><b>Vout</b>:%{y:.3f}<br>', 
-    #                     '<i>Vin</i>: %{x}'), 
-  )%>%
-  layout(legend=list(title=list(text='Vgs', x = 1, y = 0.5)),
-          xaxis = list( 
-            title = 'ԸՄԲԻՉ ԱԿՈՒՆՔ ԼԱՐՈՒՄԸ։'
-            #zerolinecolor = '#ffff', 
-            #zerolinewidth = 2, 
-            #gridcolor = 'ffff'
-          ), 
-          yaxis = list( 
-            title = 'ԸՄԲԻՉԻ ՀՈՍԱՆՔԸ։'
-            #zerolinecolor = '#ffff', 
-            #zerolinewidth = 2, 
-            #gridcolor = 'ffff'),
-            #bargap = 1
-          ))
 fig
 ```
 
@@ -116,6 +138,20 @@ fig
 ### ՎԱԲ֊Ը 3D ՊԱՏԿԵՐՄԱՄԲ
 
 ```{r}
+df <- read.csv(url('https://github.com/Varlusin/analod_design/raw/main/sp_data/pvab3d.csv'))
+
+df<-df[2: 62]
+Vds <- seq(from = 0, to = 1.8, by = 0.03)
+Vgs<- seq(0, 1.8, 0.03)
+I <- data.matrix(df, rownames.force = NA)
+
+
+fig <- plot_ly(
+  x = ~Vgs,
+  y = ~Vds,
+  z = ~I)%>% add_surface()
+
+fig
 ```
 
 ## Column {data-width="400"}
@@ -123,81 +159,94 @@ fig
 ### Ըմբիչի հոսանքը փական֊ակունք տարբեր լարումների համար։
 
 ```{r}
+rm(fig)
 df <- read.csv(url("https://github.com/Varlusin/analod_design/raw/main/sp_data/vabpmos.csv"))
+df <- df[c('vin', 'Vds', 'Iddrane', 'Idgate')]
+df$vin <- (round(df$vin*1000, digits = 0))/1000
+vec <- seq(from = 0, to = 1.8, by = 0.02)
+df<-subset(df, vin %in% vec)
+df <- df %>% accumulate_by(~vin)
+
 
 pal <- c( "red", "blue","orange", "green",  "magenta")
 pal <- setNames(pal, unique(df$Vds))
 
+fig <- df %>%plot_ly( x = ~vin,  y = ~ -Iddrane, split = ~Vds, 
+                      frame = ~frame, type = 'scatter', mode = 'lines', 
+                      line = list(simplyfy = F), colors = pal
+  )
 
-fig <- plot_ly(df, color =  ~Vds, colors = pal , legendgroup = ~Vds , type ='scatter', mode = 'lines')
+fig <- fig %>% layout(legend=list(title=list(text='Vgs', x = 1, y = 0.5)),
+  xaxis = list(
+    title = 'ԸՄԲԻՉ ԱԿՈՒՆՔ ԼԱՐՈՒՄԸ։',
+    zeroline = F
+  ),
+  yaxis = list(
+    title = 'ԸՄԲԻՉԻ ՀՈՍԱՆՔԸ։',
+    zeroline = F
+  )
+) 
+fig <- fig %>% animation_opts(
+  frame = 100, 
+  transition = 0, 
+  redraw = FALSE
+)
+fig <- fig %>% animation_slider(
+  hide = T
+)
+fig <- fig %>% animation_button(
+  x = 1, xanchor = "right", y = 0, yanchor = "bottom"
+)
 
-fig <- fig%>%
-  add_trace(
-    y= ~ -Iddrane , x= ~vin, color = ~Vds,
-    orientation = 'h'  #text = ~ rez,
-    #hovertemplate = paste('<br><b>Vout</b>:%{y:.3f}<br>', 
-    #                     '<i>Vin</i>: %{x}'), 
-  )%>%
-  layout(legend=list(title=list(text='Vds', x = 1, y = 0.5)),
-          xaxis = list( 
-            title = 'ԸՄԲԻՉ ԱԿՈՒՆՔ ԼԱՐՈՒՄԸ։'
-            #zerolinecolor = '#ffff', 
-            #zerolinewidth = 2, 
-            #gridcolor = 'ffff'
-          ), 
-          yaxis = list( 
-            title = 'ԸՄԲԻՉԻ ՀՈՍԱՆՔԸ։'
-            #zerolinecolor = '#ffff', 
-            #zerolinewidth = 2, 
-            #gridcolor = 'ffff'),
-            #bargap = 1
-          ))
 fig
 ```
 
 ### Ըմբիչի հոսանքը ըմբիչ֊ակունք տարբեր լարումների համար։
 
 ```{r}
-pal <- c( "red", "blue","orange", "green",  "magenta")
-pal <- setNames(pal, unique(df$Vgs))
+rm(fig)
+fig <- df %>%plot_ly( x = ~vin,  y = ~ -Idgate, split = ~Vds, 
+                      frame = ~frame, type = 'scatter', mode = 'lines', 
+                      line = list(simplyfy = F), colors = pal
+  )
 
+fig <- fig %>% layout(legend=list(title=list(text='Vds', x = 1, y = 0.5)),
+  xaxis = list(
+    title = 'ԸՄԲԻՉ ՓԱԿԱՆ ԼԱՐՈՒՄԸ։',
+    zeroline = F
+  ),
+  yaxis = list(
+    title = 'ԸՄԲԻՉԻ ՀՈՍԱՆՔԸ։',
+    zeroline = F
+  )
+) 
+fig <- fig %>% animation_opts(
+  frame = 100, 
+  transition = 0, 
+  redraw = FALSE
+)
+fig <- fig %>% animation_slider(
+  hide = T
+)
+fig <- fig %>% animation_button(
+  x = 1, xanchor = "right", y = 0, yanchor = "bottom"
+)
 
-fig <- plot_ly(df, color =  ~Vgs, colors = pal , legendgroup = ~Vgs , type ='scatter', mode = 'lines')
-
-fig <- fig%>%
-  add_trace(
-    y= ~ -Idgate , x= ~vin, color = ~Vgs,
-    orientation = 'h'  #text = ~ rez,
-    #hovertemplate = paste('<br><b>Vout</b>:%{y:.3f}<br>', 
-    #                     '<i>Vin</i>: %{x}'), 
-  )%>%
-  layout(legend=list(title=list(text='Vgs', x = 1, y = 0.5)),
-          xaxis = list( 
-            title = 'ԸՄԲԻՉ ԱԿՈՒՆՔ ԼԱՐՈՒՄԸ։'
-            #zerolinecolor = '#ffff', 
-            #zerolinewidth = 2, 
-            #gridcolor = 'ffff'
-          ), 
-          yaxis = list( 
-            title = 'ԸՄԲԻՉԻ ՀՈՍԱՆՔԸ։'
-            #zerolinecolor = '#ffff', 
-            #zerolinewidth = 2, 
-            #gridcolor = 'ffff'),
-            #bargap = 1
-          ))
 fig
 ```
 
 # SPICE NETLIST
 
-## Column
+## Column {.tabset}
 
-### ՆՄՕԿ
-```
+### ՆՄՕԿ SPICE նկարագրությունը։
+
+```         
 .lib /usr/local/share/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt
 .GLOBAL GND
 
 XM1 d g GND GND sky130_fd_pr__nfet_01v8 L=0.15 W=1 nf=1 
+
 Vds d GND 1.8
 Vgs g GND 1.8
 
@@ -207,16 +256,19 @@ Vgs g GND 1.8
 
 .control
 dc Vgs 0 1.8 0.03 Vds 0 1.8 0.03
-write $inputdir/filename.raw
+write filename.raw
 .endc
 .end
 ```
-
-## Column
-
-### ՊՄՕԿ
-
+### դսֆհհֆւհւի
+```{r}
 ```
+
+## Column {.tabset}
+
+### ՊՄՕԿ SPICE նկարագրությունը։
+
+```         
 .lib /usr/local/share/pdk/sky130A/libs.tech/ngspice/sky130.lib.spice tt
 .GLOBAL GND
 
@@ -232,8 +284,11 @@ Vgs g GND 1.8
 
 .control
 dc Vgs 0 1.8 0.03 Vds 0 1.8 0.03
-plot -I(Vds)
-write $inputdir/pvab3d.raw
+write filename.raw
 .endc
 .end
+```
+### guyguygh]
+
+```{r}
 ```

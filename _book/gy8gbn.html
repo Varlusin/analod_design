@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>ՄԱՍ 5 gy8gbn | ԱՆԱԼՈԳԱՅԻՆ ԻՆՏԵԳՐԱԼ ՍԽԵՄԱՆԵՐԻ ՆԱԽԱԳԾՈՒՄ։</title>
+  <meta name="description" content="ՄԱՍ 5 gy8gbn | ԱՆԱԼՈԳԱՅԻՆ ԻՆՏԵԳՐԱԼ ՍԽԵՄԱՆԵՐԻ ՆԱԽԱԳԾՈՒՄ։" />
+  <meta name="generator" content="bookdown 0.37.1 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="ՄԱՍ 5 gy8gbn | ԱՆԱԼՈԳԱՅԻՆ ԻՆՏԵԳՐԱԼ ՍԽԵՄԱՆԵՐԻ ՆԱԽԱԳԾՈՒՄ։" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="/imige/th.png" />
+  
+  <meta name="github-repo" content="Varlusin/analod_design.git" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="ՄԱՍ 5 gy8gbn | ԱՆԱԼՈԳԱՅԻՆ ԻՆՏԵԳՐԱԼ ՍԽԵՄԱՆԵՐԻ ՆԱԽԱԳԾՈՒՄ։" />
+  
+  
+  <meta name="twitter:image" content="/imige/th.png" />
+
+<meta name="author" content="Հեղինակներ՝ Արմեն Համբարյան, Վարդան Անատոմյան։" />
+
+
+<meta name="date" content="2024-01-07" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="դիֆերենցիալ-ուժեղարարար.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.3/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+\usepackage{booktabs}
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">ՕՊԵՌԱՑԻՈՆ ՈՒԺԵՂԱՐԱՐՆԵՐ։</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>ՆԱԽԱԲԱՆ</a></li>
+<li class="chapter" data-level="1" data-path="ընդհանուր-էլեկտրատեխնիկա.html"><a href="ընդհանուր-էլեկտրատեխնիկա.html"><i class="fa fa-check"></i><b>1</b> ԸՆԴՀԱՆՈՒՐ ԷԼԵԿՏՐԱՏԵԽՆԻԿԱ</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="ընդհանուր-էլեկտրատեխնիկա.html"><a href="ընդհանուր-էլեկտրատեխնիկա.html#պատմական-ակնարկ"><i class="fa fa-check"></i><b>1.1</b> ՊԱՏՄԱԿԱՆ ԱԿՆԱՐԿ</a></li>
+<li class="chapter" data-level="1.2" data-path="ընդհանուր-էլեկտրատեխնիկա.html"><a href="ընդհանուր-էլեկտրատեխնիկա.html#օհմի-օրենքը"><i class="fa fa-check"></i><b>1.2</b> ՕՀՄԻ ՕՐԵՆՔԸ</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="ներածություն.html"><a href="ներածություն.html"><i class="fa fa-check"></i><b>2</b> ՆԵՐԱԾՈՒԹՅՈՒՆ։</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="ներածություն.html"><a href="ներածություն.html#մօկ-մետաղ-օքսիդ-կիսահաղորդիչ-տրանզիստորներ"><i class="fa fa-check"></i><b>2.1</b> ՄՕԿ Մետաղ օքսիդ կիսահաղորդիչ տրանզիստորներ։</a></li>
+<li class="chapter" data-level="2.2" data-path="ներածություն.html"><a href="ներածություն.html#շեմային-treshold-լարում"><i class="fa fa-check"></i><b>2.2</b> Շեմային «treshold» լարում։</a></li>
+<li class="chapter" data-level="2.3" data-path="ներածություն.html"><a href="ներածություն.html#վոլտամպեռային-բնութագիրը"><i class="fa fa-check"></i><b>2.3</b> Վոլտ֊Ամպեռային բնութագիրը։</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="ներածություն.html"><a href="ներածություն.html#հոսքուղու-մոդուլացիա"><i class="fa fa-check"></i><b>2.3.1</b> Հոսքուղու մոդուլացիա։</a></li>
+<li class="chapter" data-level="2.3.2" data-path="ներածություն.html"><a href="ներածություն.html#body-էֆեքտ"><i class="fa fa-check"></i><b>2.3.2</b> Body էֆեքտ։</a></li>
+<li class="chapter" data-level="2.3.3" data-path="ներածություն.html"><a href="ներածություն.html#ենթաշեմային-հաղորդականություն"><i class="fa fa-check"></i><b>2.3.3</b> Ենթաշեմային հաղորդականություն</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="ներածություն.html"><a href="ներածություն.html#մօկ-փոխանցման-գործակից-transconductance"><i class="fa fa-check"></i><b>2.4</b> ՄՕԿ փոխանցման գործակից «Transconductance»:</a></li>
+<li class="chapter" data-level="2.5" data-path="ներածություն.html"><a href="ներածություն.html#մօկ-փոքր-ազդանշան-small-signal-մոդել"><i class="fa fa-check"></i><b>2.5</b> ՄՕԿ փոքր ազդանշան «Small-Signal» մոդել:</a></li>
+<li class="chapter" data-level="2.6" data-path="ներածություն.html"><a href="ներածություն.html#մօկ-spice-մոդել"><i class="fa fa-check"></i><b>2.6</b> ՄՕԿ «Spice» մոդել:</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="մեկ-տրանզիստորով-single-stage-ուժեղարարներ.html"><a href="մեկ-տրանզիստորով-single-stage-ուժեղարարներ.html"><i class="fa fa-check"></i><b>3</b> Մեկ տրանզիստորով «Single-Stage» ուժեղարարներ։</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="մեկ-տրանզիստորով-single-stage-ուժեղարարներ.html"><a href="մեկ-տրանզիստորով-single-stage-ուժեղարարներ.html#ընդհանուր-ակունքով-ուժեղարար"><i class="fa fa-check"></i><b>3.1</b> Ընդհանուր ակունքով ուժեղարար։</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="մեկ-տրանզիստորով-single-stage-ուժեղարարներ.html"><a href="մեկ-տրանզիստորով-single-stage-ուժեղարարներ.html#ընդհանուր-ակունքով-ուժեղարար-փակված-դիոդով"><i class="fa fa-check"></i><b>3.1.1</b> Ընդհանուր ակունքով ուժեղարար փակված դիոդով։</a></li>
+<li class="chapter" data-level="3.1.2" data-path="մեկ-տրանզիստորով-single-stage-ուժեղարարներ.html"><a href="մեկ-տրանզիստորով-single-stage-ուժեղարարներ.html#ընդանուրակունք-տոպոլոգիան-փակված-հոսանքի-աղբյուրով"><i class="fa fa-check"></i><b>3.1.2</b> ընդանուր֊ակունք տոպոլոգիան փակված հոսանքի աղբյուրով։</a></li>
+<li class="chapter" data-level="3.1.3" data-path="մեկ-տրանզիստորով-single-stage-ուժեղարարներ.html"><a href="մեկ-տրանզիստորով-single-stage-ուժեղարարներ.html#ընդանուրակունք-տոպոլոգիան-փակված-ակտիվ-տարով"><i class="fa fa-check"></i><b>3.1.3</b> ընդանուր֊ակունք տոպոլոգիան փակված ակտիվ տարով։</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="դիֆերենցիալ-ուժեղարարար.html"><a href="դիֆերենցիալ-ուժեղարարար.html"><i class="fa fa-check"></i><b>4</b> Դիֆերենցիալ ուժեղարարար։</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="դիֆերենցիալ-ուժեղարարար.html"><a href="դիֆերենցիալ-ուժեղարարար.html#դիֆերենցիալ-ազդանշան"><i class="fa fa-check"></i><b>4.1</b> դիֆերենցիալ ազդանշան։</a></li>
+<li class="chapter" data-level="4.2" data-path="դիֆերենցիալ-ուժեղարարար.html"><a href="դիֆերենցիալ-ուժեղարարար.html#դիֆերենցիալ-զույգ"><i class="fa fa-check"></i><b>4.2</b> դիֆերենցիալ զույգ։</a></li>
+<li class="chapter" data-level="4.3" data-path="դիֆերենցիալ-ուժեղարարար.html"><a href="դիֆերենցիալ-ուժեղարարար.html#մեծ-ազդանշանային-վարքագիծ"><i class="fa fa-check"></i><b>4.3</b> Մեծ ազդանշանային վարքագիծ</a></li>
+<li class="chapter" data-level="4.4" data-path="դիֆերենցիալ-ուժեղարարար.html"><a href="դիֆերենցիալ-ուժեղարարար.html#փոքրազդանշանի-վերլուծություն"><i class="fa fa-check"></i><b>4.4</b> Փոքր֊ազդանշանի վերլուծություն։</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="gy8gbn.html"><a href="gy8gbn.html"><i class="fa fa-check"></i><b>5</b> gy8gbn</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/Varlusin/analod_design.git" target="blank">Github</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">ԱՆԱԼՈԳԱՅԻՆ ԻՆՏԵԳՐԱԼ ՍԽԵՄԱՆԵՐԻ ՆԱԽԱԳԾՈՒՄ։</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="gy8gbn" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">ՄԱՍ 5</span> gy8gbn<a href="gy8gbn.html#gy8gbn" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="figure"><span style="display:block;" id="fig:vab"></span>
+<img src="imige/vab.png" alt="(ref:subplot-simple)" width="683" data-url="/dash/vab.html" />
+<p class="caption">
+Figure 5.1: (ref:subplot-simple)
+</p>
+</div>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="դիֆերենցիալ-ուժեղարարար.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Varlusin/analod_design/blob/main/04-d.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
